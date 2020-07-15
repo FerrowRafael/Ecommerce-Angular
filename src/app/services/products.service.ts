@@ -20,6 +20,27 @@ export class ProductsService {
 
   // tslint:disable-next-line: typedef
   getProductsById(id: number){
-    return this.http.get(`${this.BASE}search/id=${id}`);
+    return this.http.get(`${this.BASE}products/search/id/${id}`);
+  }
+
+  addProduct(product): Observable<object>{
+    return this.http.post(`${this.BASE}add`, product, {
+      headers: {
+        Authorization: localStorage.getItem('authToken') || ''
+      }
+    });
+  }
+
+  // tslint:disable-next-line: typedef
+  getMovieUpdate(id: number){
+    return this.http.get(`${this.BASE}update/id/${id}`, {
+      headers: {
+        Authorization: localStorage.getItem('authToken') || ''
+      }
+    });
+  }
+
+  getMoviesByTitle(name: string){
+    return this.http.get(`${this.BASE}movies/name/${name}`);
   }
 }
