@@ -1,19 +1,21 @@
 
-<nav class="nav-header d-flex container-fluid h-100 justify-content-between">
+<header class="header">
 
-    <section class="logo-box d-flex">
+    <section class="logo">
         
         <img class="logo-header"routerLink="home" src="https://vignette.wikia.nocookie.net/mario/images/8/80/215px-Shyguy_MP9.png/revision/latest/top-crop/width/360/height/450?cb=20130114205419&path-prefix=es" alt="movit-logo">
 
     </section>
 
     <ul>
-        <li><a routerLink="home" routerLinkActive="active">Home</a></li>
+        <li>
+            <a routerLink="home" routerLinkActive="active">Home</a>
+        </li>
 
     </ul>
 
     <!-- SIN LOGEAR -->
-    <div  *ngIf="!usersService.getUser()">
+    <div  class="register" *ngIf="!usersService.getUser()">
         <a [routerLink]="['/register']" routerLinkActive="active">REGISTER</a>
         <a [routerLink]="['/login']" routerLinkActive="active">LOGIN</a>
     </div>
@@ -27,4 +29,4 @@
         </div>
     </div>
     
-</nav>
+</header>
