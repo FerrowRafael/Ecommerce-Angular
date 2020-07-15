@@ -1,0 +1,30 @@
+
+<nav class="nav-header d-flex container-fluid h-100 justify-content-between">
+
+    <section class="logo-box d-flex">
+        
+        <img class="logo-header"routerLink="home" src="https://vignette.wikia.nocookie.net/mario/images/8/80/215px-Shyguy_MP9.png/revision/latest/top-crop/width/360/height/450?cb=20130114205419&path-prefix=es" alt="movit-logo">
+
+    </section>
+
+    <ul>
+        <li><a routerLink="home" routerLinkActive="active">Home</a></li>
+
+    </ul>
+
+    <!-- SIN LOGEAR -->
+    <div  *ngIf="!usersService.getUser()">
+        <a [routerLink]="['/register']" routerLinkActive="active">REGISTER</a>
+        <a [routerLink]="['/login']" routerLinkActive="active">LOGIN</a>
+    </div>
+
+    <!-- LOGEADO -->
+    <div class="userZone login-header" *ngIf="usersService.getUser() as user">
+        <a class="bt-rent" (click)="logout()">LOGOUT</a>
+        <a [routerLink]="['/profile']" class="material-icons search-icon" routerLinkActive="active"><!--{{user.username}}--><span>person</span></a>
+        <div *ngIf="usersService.getUser().role == 'admin'">
+            <a [routerLink]="['/admin']" class="material-icons search-icon" routerLinkActive="active"><!--{{user.username}}--><span>person</span></a>
+        </div>
+    </div>
+    
+</nav>

@@ -1,0 +1,14 @@
+<main>
+    <h3 class="populares-title w-100">Productos</h3>
+    <div class="row content-slide">
+        <div *ngFor="let product of products | slice:0:7">
+            <div class="movie-box col p-2">
+                <img class="movie-img" [src]="product.image_path" alt="" [routerLink]="'/details/' + product._id"> 
+                <p class="movie-name">{{ product.name }}</p>
+            </div>
+        </div>
+    </div>
+</main>
+     
+        
+        
