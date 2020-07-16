@@ -10,9 +10,9 @@ import { User } from './models/user.model';
 export class AppComponent implements OnInit {
   title = 'front-ecommerce';
   constructor(public usersService: UsersService) { }
-  // tslint:disable-next-line: typedef
   ngOnInit() {
     const token = localStorage.getItem('authToken');
+    console.log(token);
     if (token) {
       this.usersService.getUserInfo(token)
         .subscribe((res: User) => {

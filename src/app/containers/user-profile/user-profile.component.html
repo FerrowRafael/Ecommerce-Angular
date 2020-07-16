@@ -1,0 +1,32 @@
+<div>
+    <h2>Perfil</h2>
+    <p>{{ users.userName }}</p>
+    <p>{{ users.email }}</p>
+    <p>{{ users.role }}</p>
+    <button>Editar perfil</button>
+</div>  
+
+<!-- ENLACES -->
+<nav class="sidebar d-flex flex-column align-items-end justify-content-center w-25 h-100 m-0 p-3">
+
+    <ul class="bt-sidebar-list d-flex d-flex flex-column justify-content-center align-items-end">
+
+        <li><a class="bt-sidebar" routerLink="/profile/data" routerLinkActive="active">Mis datos</a></li>
+        <li><a class="bt-sidebar" routerLink="/profile/order" routerLinkActive="active">Mis pedidos</a></li>
+        <li><a class="bt-sidebar"routerLink="/profile/update" routerLinkActive="active">Modificar mis datos</a></li>
+    </ul>
+</nav>
+
+<!-- MIS PEDIDOS -->
+<div>
+    <h2>Pedidos</h2>
+    <p>{{ orders.total }}</p>
+    <!-- <p>Status: {{ orders.status }}</p>
+    <p>{{ orders.deliveryDate }}</p>
+    <div *ngFor="let order of orders.productIds | slice:0:20">
+        <div> 
+            <p class="order-name">{{ order.unit }}</p>
+        </div>
+    </div> -->
+    <button>Editar perfil</button>
+</div>  

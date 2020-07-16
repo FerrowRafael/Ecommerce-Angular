@@ -1,7 +1,7 @@
 <main>
     <h3 class="product-title w-100">Productos</h3>
     <div class="row content-slide">
-        <div *ngFor="let product of products | slice:0:7">
+        <div *ngFor="let product of products | slice:0:20">
             <div>
                 <img class="product-img" [src]="product.image_path" alt="" [routerLink]="'/details/' + product._id"> 
                 <p class="product-name">{{ product.name }}</p>

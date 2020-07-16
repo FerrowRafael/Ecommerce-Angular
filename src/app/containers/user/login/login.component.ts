@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
       this.usuariosService.login(loginForm.value)
         .subscribe(
           (res: HttpResponse<object>) => {
+            console.log("Login hasta aqui")
             this.notification.success(
               'Login realizado con éxito',
               res['message']

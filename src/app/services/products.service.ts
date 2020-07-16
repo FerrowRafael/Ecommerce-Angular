@@ -18,7 +18,6 @@ export class ProductsService {
     return this.http.get<Product>(`${this.BASE}products/all`);
   }
 
-  // tslint:disable-next-line: typedef
   getProductsById(id: number){
     return this.http.get(`${this.BASE}products/search/id/${id}`);
   }
@@ -31,7 +30,6 @@ export class ProductsService {
     });
   }
 
-  // tslint:disable-next-line: typedef
   getMovieUpdate(id: number){
     return this.http.get(`${this.BASE}update/id/${id}`, {
       headers: {
