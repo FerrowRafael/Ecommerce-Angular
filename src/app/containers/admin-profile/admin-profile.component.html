@@ -1,1 +1,22 @@
-<p>admin-profile works!</p>
+<!-- <p>admin-profile works!</p>
+<app-create-product></app-create-product> -->
+<h2>Usuarios</h2>
+<div *ngFor="let user of users | slice:0:20">
+    <p>{{ user._id }}</p>
+    <p>{{ user.userName }}</p>
+    <p>{{ user.email }}</p>
+    <p>{{ user.role }}</p>
+</div> 
+
+<h2>Pedidos</h2>
+<div  style="margin-left: 10px;"*ngFor="let order of orders | slice:0:20">
+    <p>{{ order._id }}</p>
+    <p>Status: {{ order.status }}</p>
+    <p>Total: {{ order.total }}</p>
+    <p>Productos</p>
+    <div *ngFor="let product of order.productIds | slice:0:20">
+        <p>Unidades: {{product.unit}}</p>
+        <p>Total: {{product.total}}</p>
+    </div>
+    <p>{{ order.UserId }}</p>
+</div> 

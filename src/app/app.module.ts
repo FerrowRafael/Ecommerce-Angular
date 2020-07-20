@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CreateProductComponent } from './components/create-product/create-product.component';
+import { UpdateProductComponent } from './components/update-product/update-product.component';
 //#endregion
 
 //#region Containers
@@ -16,16 +18,27 @@ import { HomeComponent } from './containers/home/home.component';
 import { RegisterComponent } from './containers/user/register/register.component';
 import { LoginComponent } from './containers/user/login/login.component';
 import { ProductDetailComponent } from './containers/product-detail/product-detail.component';
-import { ProfileComponent } from './containers/profile/profile.component';
 import { AdminProfileComponent } from './containers/admin-profile/admin-profile.component';
 import { PurchaisingProcessComponent } from './containers/purchaising-process/purchaising-process.component';
 import { ResultsComponent } from './containers/results/results.component';
+import { UserProfileComponent } from './containers/user-profile/user-profile.component';
+import { SellerProfileComponent } from './containers/seller-profile/seller-profile.component';
 //#endregion
 
 //#region ngDesign Zorro
 import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { es_ES } from 'ng-zorro-antd/i18n';
+import { es_ES, NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+
+registerLocaleData(en);
 //#endregion
+
+//#region Material
+// import { MaterialModule } from './material.module';
+//#region 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,19 +48,24 @@ import { es_ES } from 'ng-zorro-antd/i18n';
     FooterComponent,
     HeaderComponent,
     ProductDetailComponent,
-    ProfileComponent,
     AdminProfileComponent,
     PurchaisingProcessComponent,
-    ResultsComponent
+    ResultsComponent,
+    UserProfileComponent,
+    CreateProductComponent,
+    UpdateProductComponent,
+    SellerProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgZorroAntdModule
+    NgZorroAntdModule,
+    BrowserAnimationsModule,
+    // MaterialModule
   ],
-  providers: [],
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

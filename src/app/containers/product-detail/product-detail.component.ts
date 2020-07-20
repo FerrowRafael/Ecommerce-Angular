@@ -25,8 +25,6 @@ export class ProductDetailComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.detailsById(params.id);
       this.product = params.id;
-      // this.getGenreId;
-      // this.order = this.usersService.getOrder();
     });
   }
 
@@ -35,15 +33,6 @@ export class ProductDetailComponent implements OnInit {
     this.productsService.getProductsById(id).subscribe((pelicula: any) => {
       this.detalle = pelicula;
       console.log(this.detalle);
-      // this.genres = pelicula.Genres;
-      // console.log(this.genres);
-      // for (const genre of this.genres){
-      //   this.generos.push(genre.id);
-      // }
-      // const genre1 = this.generos[0];
-      // this.getGenreId(genre1);
-      // this.actores = pelicula.Actors;
-      // console.log(this.actores)
     });
   }
 }

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { OrdersService } from 'src/app/services/orders.service';
+
 @Component({
-  selector: 'app-admin-profile',
-  templateUrl: './admin-profile.component.html',
-  styleUrls: ['./admin-profile.component.scss']
+  selector: 'app-user-profile',
+  templateUrl: './user-profile.component.html',
+  styleUrls: ['./user-profile.component.scss']
 })
-export class AdminProfileComponent implements OnInit {
+export class UserProfileComponent implements OnInit {
 
   users: any;
   orders: any;
@@ -19,19 +20,18 @@ export class AdminProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.UserInfo();
+    this.UserInfo(this.token);
     this.OrdersInfo(this.id);
   }
 
-  UserInfo() {
-    this.usersService.getUsersAll().subscribe((user: any) => {
-      console.log(user)
+  UserInfo(token) {
+    this.usersService.getUserInfo(token).subscribe((user: any) => {
       this.users = user;
     });
   }
 
   OrdersInfo(id) {
-    this.ordersService.getOrdersAll(id).subscribe((order: any) => {
+    this.ordersService.getOrderById(id).subscribe((order: any) => {
       this.orders = order;
       console.log(order);
     });

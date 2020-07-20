@@ -18,8 +18,60 @@ export class ProductsService {
     return this.http.get<Product>(`${this.BASE}products/all`);
   }
 
-  // tslint:disable-next-line: typedef
   getProductsById(id: number){
-    return this.http.get(`${this.BASE}search/id=${id}`);
+    return this.http.get(`${this.BASE}products/search/id/${id}`);
+  }
+
+  addProduct(product): Observable<object>{
+    return this.http.post(`${this.BASE}products/add`, product, {
+      headers: {
+        Authorization: localStorage.getItem('authToken') || ''
+      }
+    });
+  }
+
+  ProductUpdate(id: number){
+    return this.http.get(`${this.BASE}products/update/id/${id}`, {
+      headers: {
+        Authorization: localStorage.getItem('authToken') || ''
+      }
+    });
+  }
+
+  ProductDelete(id: number){
+    return this.http.get(`${this.BASE}products/delete/id/${id}`, {
+      headers: {
+        Authorization: localStorage.getItem('authToken') || ''
+      }
+    });
+  }
+
+  ProductsBest(){
+    return this.http.get(`${this.BASE}products/best`, {
+      headers: {
+        Authorization: localStorage.getItem('authToken') || ''
+      }
+    });
+  }
+
+  ProductsRecent(){
+    return this.http.get(`${this.BASE}products/recent`, {
+      headers: {
+        Authorization: localStorage.getItem('authToken') || ''
+      }
+    });
+  }
+
+  ProductsbyCategory(){
+    return this.http.get(`${this.BASE}products/category`, {
+      headers: {
+        Authorization: localStorage.getItem('authToken') || ''
+      }
+    });
+  }
+
+  getProductsByName(name: string){
+    console.log(name)
+    return this.http.get(`${this.BASE}products/searchMa/input/${name}`);
   }
 }

@@ -46,7 +46,7 @@ export class UsersService {
 
   getUsersAll(){
     this.token = localStorage.getItem('authToken');
-    return this.http.get(`${this.BASE}users/info/all`, {
+    return this.http.get(`${this.BASE}users/all`, {
       headers: {
         Authorization: localStorage.getItem('authToken') || ''
       }
