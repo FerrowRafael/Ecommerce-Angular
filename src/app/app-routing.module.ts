@@ -6,6 +6,7 @@ import { ProductDetailComponent } from './containers/product-detail/product-deta
 import { UserProfileComponent } from './containers/user-profile/user-profile.component';
 import { RegisterComponent } from './containers/user/register/register.component';
 import { LoginComponent } from './containers/user/login/login.component';
+import { AdminProfileComponent } from './containers/admin-profile/admin-profile.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'profile', component: UserProfileComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'adminProfile', component: AdminProfileComponent },
 ];
 
 @NgModule({

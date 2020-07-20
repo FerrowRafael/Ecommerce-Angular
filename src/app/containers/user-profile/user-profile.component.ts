@@ -9,8 +9,8 @@ import { OrdersService } from 'src/app/services/orders.service';
 })
 export class UserProfileComponent implements OnInit {
 
-  users: '';
-  orders: '';
+  users: any;
+  orders: any;
   token = localStorage.getItem('authToken');
 
   constructor(

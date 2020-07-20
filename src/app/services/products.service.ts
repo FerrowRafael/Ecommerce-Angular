@@ -23,22 +23,55 @@ export class ProductsService {
   }
 
   addProduct(product): Observable<object>{
-    return this.http.post(`${this.BASE}add`, product, {
+    return this.http.post(`${this.BASE}products/add`, product, {
       headers: {
         Authorization: localStorage.getItem('authToken') || ''
       }
     });
   }
 
-  getMovieUpdate(id: number){
-    return this.http.get(`${this.BASE}update/id/${id}`, {
+  ProductUpdate(id: number){
+    return this.http.get(`${this.BASE}products/update/id/${id}`, {
       headers: {
         Authorization: localStorage.getItem('authToken') || ''
       }
     });
   }
 
-  getMoviesByTitle(name: string){
-    return this.http.get(`${this.BASE}movies/name/${name}`);
+  ProductDelete(id: number){
+    return this.http.get(`${this.BASE}products/delete/id/${id}`, {
+      headers: {
+        Authorization: localStorage.getItem('authToken') || ''
+      }
+    });
+  }
+
+  ProductsBest(){
+    return this.http.get(`${this.BASE}products/best`, {
+      headers: {
+        Authorization: localStorage.getItem('authToken') || ''
+      }
+    });
+  }
+
+  ProductsRecent(){
+    return this.http.get(`${this.BASE}products/recent`, {
+      headers: {
+        Authorization: localStorage.getItem('authToken') || ''
+      }
+    });
+  }
+
+  ProductsbyCategory(){
+    return this.http.get(`${this.BASE}products/category`, {
+      headers: {
+        Authorization: localStorage.getItem('authToken') || ''
+      }
+    });
+  }
+
+  getProductsByName(name: string){
+    console.log(name)
+    return this.http.get(`${this.BASE}products/searchMa/input/${name}`);
   }
 }

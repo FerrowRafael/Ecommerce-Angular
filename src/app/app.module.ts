@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CreateProductComponent } from './components/create-product/create-product.component';
+import { UpdateProductComponent } from './components/update-product/update-product.component';
 //#endregion
 
 //#region Containers
@@ -28,9 +30,13 @@ import { es_ES, NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-
 registerLocaleData(en);
 //#endregion
+
+//#region Material
+// import { MaterialModule } from './material.module';
+//#region 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +49,9 @@ registerLocaleData(en);
     AdminProfileComponent,
     PurchaisingProcessComponent,
     ResultsComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    CreateProductComponent,
+    UpdateProductComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +59,8 @@ registerLocaleData(en);
     FormsModule,
     HttpClientModule,
     NgZorroAntdModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    // MaterialModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

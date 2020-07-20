@@ -1,1 +1,20 @@
-<p>results works!</p>
+<!-- FILTRO POR NAME -->
+<div>
+    <form action="">
+        <input type="text" placeholder="Buscar producto" [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
+        <button (click)="ProductsByName(name)">Buscar</button>
+    </form>
+</div>
+
+
+
+    <div *ngFor="let producto of productos">
+        <div>
+            <p>{{ producto.name }}</p>
+            <img [src]= "producto.image_path" alt="" [routerLink]="'/details/' + producto.id"> 
+        </div>
+    </div>
+
+
+
+        

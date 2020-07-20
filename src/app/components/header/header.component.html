@@ -14,6 +14,9 @@
 
     </ul>
 
+    <!-- BUSCAR -->
+    <app-results></app-results>
+
     <!-- SIN LOGEAR -->
     <div  class="register" *ngIf="!usersService.getUser()">
         <a [routerLink]="['/register']" routerLinkActive="active">REGISTER</a>
@@ -23,9 +26,9 @@
     <!-- LOGEADO -->
     <div class="userZone login-header" *ngIf="usersService.getUser() as user">
         <a class="bt-rent" (click)="logout()">LOGOUT</a>
-        <a [routerLink]="['/profile']" class="material-icons search-icon" routerLinkActive="active"><!--{{user.username}}--><span>person</span></a>
+        <a [routerLink]="['/profile']" class="material-icons search-icon" routerLinkActive="active"><!--{{user.username}}--><span>User Profile</span></a>
         <div *ngIf="usersService.getUser().role == 'admin'">
-            <a [routerLink]="['/admin']" class="material-icons search-icon" routerLinkActive="active"><!--{{user.username}}--><span>person</span></a>
+            <a [routerLink]="['/adminProfile']" class="material-icons search-icon" routerLinkActive="active"><!--{{user.username}}--><span>Admin Profile</span></a>
         </div>
     </div>
     

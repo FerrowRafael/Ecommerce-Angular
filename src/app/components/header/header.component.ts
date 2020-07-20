@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
+import { ProductsService } from 'src/app/services/products.service';
 import { User } from '../../models/user.model';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-header',
@@ -15,10 +17,12 @@ export class HeaderComponent implements OnInit {
   public successMsg: string;
   public mensaje: string;
   private token: any;
-
+  title: '';
+  products: '';
 
   constructor(
     public usersService: UsersService,
+    public productsService: ProductsService,
     public router: Router,
   ) { }
 
@@ -43,6 +47,12 @@ export class HeaderComponent implements OnInit {
 
   mensajeLogout($scope) {
     $scope.mensaje = 'Ya te vas?';
+  }
+
+  searchProducts(name: string) {
+    this.productsService.getProductsByName(name).subscribe((product: any) => {
+      this.products = product;
+    });
   }
 
 }

@@ -1,5 +1,6 @@
 <div>
     <h2>Perfil</h2>
+    <p>{{ users._id }}</p>
     <p>{{ users.userName }}</p>
     <p>{{ users.email }}</p>
     <p>{{ users.role }}</p>
@@ -20,13 +21,13 @@
 <!-- MIS PEDIDOS -->
 <div>
     <h2>Pedidos</h2>
-    <p>{{ orders.total }}</p>
-    <!-- <p>Status: {{ orders.status }}</p>
+    <p>{{ orders.total }}</p> -->
+    <p>Status: {{ orders.status }}</p>
     <p>{{ orders.deliveryDate }}</p>
     <div *ngFor="let order of orders.productIds | slice:0:20">
         <div> 
             <p class="order-name">{{ order.unit }}</p>
         </div>
-    </div> -->
+    </div>
     <button>Editar perfil</button>
 </div>  

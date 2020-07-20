@@ -10,13 +10,8 @@ export class OrdersService {
 
   BASE = 'http://localhost:3001/';
   public order: Order;
-  private token: string;
-  private daysRent: any;
-  private price: any;
-  // alquiler: any = {id: this.movie.id, daysRent: this.daysRent, payingAmount: this.totalAmount}
 
   constructor(
-    // public order: object,
     private http: HttpClient
   ) { }
 
@@ -25,7 +20,7 @@ export class OrdersService {
   getOrdersAll(token) {
     return this.http.get(`${this.BASE}orders/all`, {
       headers: {
-        Authorization: token
+        Authorization: localStorage.getItem('authToken') || ''
       }
     });
   }
