@@ -8,6 +8,6 @@
         <p class="product-price ">{{ detalle.price }} €</p>
         <p class="product-stock">Stock: {{ detalle.stock }}</p>
         <p class="product-category">{{ detalle.category }}</p>
-        <button>Comprar</button>
+        <button class="bt-rent" (click)="addToCart(detalle)" >Añadir al carrito</button>
     </div>
 </div>

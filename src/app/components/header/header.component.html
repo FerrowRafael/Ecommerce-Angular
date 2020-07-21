@@ -32,6 +32,7 @@
         <div *ngIf="usersService.getUser().role == 'seller' ">
             <a [routerLink]="['/sellerProfile']" class="material-icons search-icon" routerLinkActive="active"><!--{{user.username}}--><span>Seller Profile</span></a>
         </div>
+        <a [routerLink]="['/cart']" class="material-icons search-icon" routerLinkActive="active"><!--{{user.username}}--><span>Cart</span></a>
     </div>
     
 </header>

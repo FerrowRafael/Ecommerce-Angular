@@ -1,0 +1,11 @@
+<h2>Carrito de la compra</h2>
+
+<div *ngFor="let product of this.cartService.productsInCart">
+    <p>{{ product.name }}</p>
+    <p>{{ product.price }} €</p>
+    <p>Units: </p>
+    <br/>
+</div>
+<div>
+    <p>TOTAL:</p>
+</div>

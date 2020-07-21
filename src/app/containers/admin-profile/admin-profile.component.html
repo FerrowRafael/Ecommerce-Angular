@@ -1,7 +1,7 @@
 <!-- <p>admin-profile works!</p>
 <app-create-product></app-create-product> -->
 <h2>Usuarios</h2>
-<div *ngFor="let user of users | slice:0:20">
+<div style="margin-left: 10px; background-color: blue; color:white" *ngFor="let user of users | slice:0:20">
     <p>{{ user._id }}</p>
     <p>{{ user.userName }}</p>
     <p>{{ user.email }}</p>
@@ -9,7 +9,7 @@
 </div> 
 
 <h2>Pedidos</h2>
-<div  style="margin-left: 10px;"*ngFor="let order of orders | slice:0:20">
+<div style="margin-left: 10px; background-color: red;"*ngFor="let order of orders | slice:0:20">
     <p>{{ order._id }}</p>
     <p>Status: {{ order.status }}</p>
     <p>Total: {{ order.total }}</p>
@@ -18,5 +18,5 @@
         <p>Unidades: {{product.unit}}</p>
         <p>Total: {{product.total}}</p>
     </div>
-    <p>{{ order.UserId }}</p>
+    <p>Vendedor: {{ order.UserId }}</p>
 </div> 

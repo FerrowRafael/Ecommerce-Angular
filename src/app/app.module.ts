@@ -23,6 +23,7 @@ import { PurchaisingProcessComponent } from './containers/purchaising-process/pu
 import { ResultsComponent } from './containers/results/results.component';
 import { UserProfileComponent } from './containers/user-profile/user-profile.component';
 import { SellerProfileComponent } from './containers/seller-profile/seller-profile.component';
+import { CartComponent } from './containers/cart/cart.component';
 //#endregion
 
 //#region ngDesign Zorro
@@ -31,6 +32,7 @@ import { es_ES, NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+
 
 registerLocaleData(en);
 //#endregion
@@ -54,7 +56,8 @@ registerLocaleData(en);
     UserProfileComponent,
     CreateProductComponent,
     UpdateProductComponent,
-    SellerProfileComponent
+    SellerProfileComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
