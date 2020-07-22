@@ -1,10 +1,20 @@
 <h2>Perfil Vendedor</h2>
 
-<div>
-    <h2>Perfil</h2>
-    <p>Nombre vendedor: {{ users.userName }}</p>
-    <p>Email contacto: {{ users.email }}</p>
-    <button>Editar perfil</button>
-</div>  
+<div nz-row class="sellerProfile">
+    <div nz-col nzSpan="6" class="lateral">
+        <button (click)="toggle()" id="bt">
+            {{buttonName}}
+        </button>
+    </div>
+    <div nz-col nzSpan="15" *ngIf="!show">
+        <h2>Perfil</h2>
+        <p>Nombre vendedor: {{ users.userName }}</p>
+        <p>Email contacto: {{ users.email }}</p>
+        <button>Editar perfil</button>
+    </div>  
+    <div nz-col nzSpan="18" >
+        <app-create-product *ngIf="show"></app-create-product>
+    </div>
+</div>
 
-<app-create-product></app-create-product>
+

@@ -13,6 +13,7 @@ import { ResultsComponent } from './containers/results/results.component';
 
 
 const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'details/:id', component: ProductDetailComponent },
   { path: 'profile', component: UserProfileComponent },

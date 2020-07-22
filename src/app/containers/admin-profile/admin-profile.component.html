@@ -1,22 +1,60 @@
 <!-- <p>admin-profile works!</p>
 <app-create-product></app-create-product> -->
-<h2>Usuarios</h2>
-<div style="margin-left: 10px; background-color: blue; color:white" *ngFor="let user of users | slice:0:20">
-    <p>{{ user._id }}</p>
-    <p>{{ user.userName }}</p>
-    <p>{{ user.email }}</p>
-    <p>{{ user.role }}</p>
-</div> 
-
-<h2>Pedidos</h2>
-<div style="margin-left: 10px; background-color: red;"*ngFor="let order of orders | slice:0:20">
-    <p>{{ order._id }}</p>
-    <p>Status: {{ order.status }}</p>
-    <p>Total: {{ order.total }}</p>
-    <p>Productos</p>
-    <div *ngFor="let product of order.productIds | slice:0:20">
-        <p>Unidades: {{product.unit}}</p>
-        <p>Total: {{product.total}}</p>
+<div nz-row>
+    <div nz-col nzSpan="10">
+        <h2>Usuarios</h2>
+        <div style="margin-left: 10px;; color:white" *ngFor="let user of users | slice:0:20">
+            <table>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                </tr>
+                <tr>
+                  <td>{{ user._id }}</td>
+                  <td>{{ user.userName }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.role }}</td>
+                </tr>      
+            </table>    
+        </div> 
     </div>
-    <p>Vendedor: {{ order.UserId }}</p>
-</div> 
+    
+    <div nz-col nzSpan="10">
+        <h2>Pedidos</h2>
+        <div style="margin-left: 10px;"*ngFor="let order of orders | slice:0:20">
+            <table>
+                <tr>
+                  <th>ID</th>
+                  <th>Status</th>
+                  <th>Total</th>
+                  <th>Productos</th>
+                  <th>Vendedor</th>
+                </tr>
+                <tr>
+                  <td>{{ order._id }}</td>
+                  <td>{{ order.status }}</td>
+                  <td>{{ order.total }}</td>
+                  <td>
+                    <div *ngFor="let product of order.productIds | slice:0:20">
+                        <table>
+                            <tr>
+                                <td>ID</td>
+                                <td>Unidades</td>
+                                <td>Total</td>
+                            </tr>
+                            <tr>
+                                <td>{{ product._id }}</td>
+                                <td>{{ product.unit }}</td>
+                                <td>{{ product.total }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                  </td>
+                  <td>{{ order.UserId }}</td>
+                </tr>      
+            </table>    
+        </div> 
+    </div>
+</div>
