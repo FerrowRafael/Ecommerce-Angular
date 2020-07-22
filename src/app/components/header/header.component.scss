@@ -2,12 +2,14 @@
 .header {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     background-color: $darkblue;
     color: $white;
     height: 60px;
     font-size: 1rem;
     border-bottom-left-radius: 2em;
     border-bottom-right-radius: 2em;
+
     .guestZone, .userZone, .leftHeader {
         display: flex;
     }
@@ -27,39 +29,12 @@
             background-color: $lightblue;
         }
     }
+
     .logo-header{
-        width: 50px;
-    }
-    .patata{
-        justify-content: space-evenly;
-        display: flex;
-        width: 18em;
-        margin-top: 0.5em;
+        width: 60px;
     }
 
-    .ant-badge:not(.ant-badge-not-a-wrapper) {
-        margin-right: 20px;
+    .fa-shopping-cart{
+        height: 1.4em;
     }
-
-    .ant-badge.ant-badge-rtl:not(.ant-badge-not-a-wrapper) {
-        margin-right: 0;
-        margin-left: 20px;
-    }
-
-    .head-example {
-        width: 30px;
-        height: 30px;
-        border-radius: 2px;
-        background: $lightblue;
-        display: inline-block;
-        vertical-align: middle;
-    }
-    
-    [data-theme="dark"] .head-example {
-    background: rgba(255,255,255,.12);
-  }
-
-    .ShoppingCartOutlined{
-      width: 100px
-  }
 }

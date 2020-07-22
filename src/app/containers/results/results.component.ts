@@ -9,13 +9,14 @@ import { ProductsService } from '../../services/products.service';
 export class ResultsComponent implements OnInit {
 
   productos: '';
+  products: '';
   name: '';
   constructor(
     private productsService: ProductsService,
   ) { }
 
   ngOnInit(): void {
-
+    this.AllProducts();
   }
 
   // PRODUCTOS BY NAME
@@ -25,5 +26,10 @@ export class ResultsComponent implements OnInit {
     });
   }
 
-
+  AllProducts() {
+    this.productsService.getProductsAll().subscribe((product: any) => {
+      this.products = product;
+      console.log(product);
+    });
+  } 
 }

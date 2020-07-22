@@ -1,21 +1,40 @@
-<div class="registerContainer">
-    <h2>Register Form</h2>
-    <form #registerForm="ngForm" (submit)="register(registerForm)">
-        <input type="userName" name="userName" ngModel
-        required
-        placeholder="Introduce your userName">
-        <input type="email" name="email" ngModel
-        email 
-        required
-        placeholder="Introduce your email">
-        <!-- pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,40}$" -->
-        <input type="password" 
-        required 
-        name="password" ngModel
-         placeholder="Introduce your password">
-         <small class="passworError" *ngIf="registerForm.controls.password?.errors?.pattern">
-             Your password must contain at least a lowercase letter, a uppercase letter, a number, and must be between 8 and 40 characters
-         </small>
-        <button type="submit">Register</button>
-    </form>
+<div class="registerContainer container">
+    <h2>Register</h2>
+    <div class="row">
+        <form class="modal-body col-6" #registerForm="ngForm" (submit)="register(registerForm)">
+            <div class="md-form mb-5">
+                <input type="userName" name="userName" ngModel class="form-control validate white-text"
+                required
+                placeholder="UserName">  
+            </div>
+        
+            <div class="md-form mb-5">
+                <input type="email" name="email" ngModel class="form-control validate white-text"
+                email 
+                required
+                placeholder="Email">
+                <!-- pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,40}$" -->
+            </div>
+
+            <div class="md-form mb-5">
+                <input type="password" class="form-control validate white-text"
+                required 
+                name="password" ngModel
+                placeholder="Password">
+                <small class="passworError" *ngIf="registerForm.controls.password?.errors?.pattern">
+                    Your password must contain at least a lowercase letter, a uppercase letter, a number, and must be between 8 and 40 characters
+                </small>
+            </div>
+        
+            <div class="row d-flex align-items-center mb-4">
+            <div class="text-center mb-3 col-md-12">
+                <button type="submit" class="btn btn-success btn-block btn-rounded z-depth-1">Registrarse</button>
+            </div>
+            </div>
+            
+            <div>
+                <p>Ya eres miembro? <a [routerLink]="'/login'" class="blue-text"> Login</a></p>
+            </div>
+        </form>
+    </div>
 </div>

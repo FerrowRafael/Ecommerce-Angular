@@ -1,32 +1,32 @@
 
 <header class="header">
-    <div>
-
-        <img class="logo-header"routerLink="home" routerLink="home" routerLinkActive="active" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Google_Lens_-_new_logo.png/600px-Google_Lens_-_new_logo.png" alt="movit-logo">
-
+    <img class="logo-header"routerLink="home" routerLink="home" routerLinkActive="active" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Google_Lens_-_new_logo.png/600px-Google_Lens_-_new_logo.png" alt="movit-logo">
+    <div class="userZone login-header">
         <a routerLink="home" routerLinkActive="active">Home</a>
+        <a routerLink="results" routerLinkActive="active">Results</a>
     </div>
 
-
     <!-- SIN LOGEAR -->
-    <div  class="register" *ngIf="!usersService.getUser()">
+    <div class="register userZone" *ngIf="!usersService.getUser()">
         <a [routerLink]="['/register']" routerLinkActive="active">REGISTER</a>
         <a [routerLink]="['/login']" routerLinkActive="active">LOGIN</a>
     </div>
 
     <!-- LOGEADO -->
-    <div class="userZone login-header" *ngIf="usersService.getUser() as user">
+    <div class="userZone" *ngIf="usersService.getUser() as user">
         <a class="bt-rent" (click)="logout()">LOGOUT</a>
-        <div *ngIf="usersService.getUser().role == 'user'">
+        <div class="userZone" *ngIf="usersService.getUser().role == 'user'">
             <a [routerLink]="['/profile']" routerLinkActive="active"><!--{{user.username}}--><span>User Profile</span></a>
         </div>
-        <div *ngIf="usersService.getUser().role == 'admin'">
+        <div class="userZone" *ngIf="usersService.getUser().role == 'admin'">
             <a [routerLink]="['/adminProfile']" routerLinkActive="active"><!--{{user.username}}--><span>Admin Profile</span></a>
         </div>
-        <div *ngIf="usersService.getUser().role == 'seller' ">
+        <div class="userZone" *ngIf="usersService.getUser().role == 'seller' ">
             <a [routerLink]="['/sellerProfile']" routerLinkActive="active"><!--{{user.username}}--><span>Seller Profile</span></a>
         </div>
-        <a [routerLink]="['/cart']" routerLinkActive="active"><!--{{user.username}}--><span>Cart</span></a>
+        <a [routerLink]="['/cart']" routerLinkActive="active"><!--{{user.username}}-->
+            <i class="fas fa-shopping-cart"></i>
+        </a>
     </div>
     
 </header>

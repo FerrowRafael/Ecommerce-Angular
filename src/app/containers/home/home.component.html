@@ -1,14 +1,28 @@
 <main>
-    <h3 class="product-title w-100">Productos</h3>
+    <div>
+        <img class="imgHome" src="https://media.captureone.com/cache/5/6/e/c/b/b/56ecbb60aada139fe296c3eb1e0818771554ac47.png" alt="">
+    </div>
     <app-results></app-results>
-    <div class="row content-slide">
-        <div *ngFor="let product of products | slice:0:20">
-            <div>
-                <img class="product-img" [src]="product.image_path" alt="" [routerLink]="'/details/' + product._id"> 
-                <p class="product-name">{{ product.name }}</p>
-            </div>
+    <h3 class="product-title w-100">Productos</h3>
+    <div class="content" fxLayout="row wrap">
+        <div fxFlex="25%" *ngFor="let product of products | slice:0:20">
+          <mat-card class="mat-elevation-z4" >
+            <mat-card-header>
+              <mat-card-title>{{product.name}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image class="product-img" [src]="product.image_path" alt="" [routerLink]="'/details/' + product._id" alt={{product.name}}>
+            <mat-card-actions>
+              <i class="fas fa-thumbs-up fa-2x"></i>
+              <i class="fas fa-share-alt fa-2x"></i>
+              <p>{{product.price}} €</p>
+            </mat-card-actions>
+          </mat-card>
         </div>
     </div>
+
+    
+    
+    
 </main>
 
 

@@ -38,7 +38,13 @@ registerLocaleData(en);
 //#endregion
 
 //#region Material
-// import { MaterialModule } from './material.module';
+import { MaterialModule } from './material.module';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatIconModule } from '@angular/material/icon';
 //#region 
 
 @NgModule({
@@ -66,7 +72,13 @@ registerLocaleData(en);
     HttpClientModule,
     NgZorroAntdModule,
     BrowserAnimationsModule,
-    // MaterialModule
+    MaterialModule,
+    MatCardModule,
+    MatGridListModule,
+    MatToolbarModule,
+    MatButtonModule,
+    FlexLayoutModule,
+    MatIconModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

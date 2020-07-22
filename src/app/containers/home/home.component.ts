@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
         this.products = product;
         console.log(product);
       });
-    }
+  }
 
 
   // getImage(pelicula: any){

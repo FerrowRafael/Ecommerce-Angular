@@ -3,7 +3,7 @@ import { CartService } from '../../services/cart.service';
 import { OrdersService } from '../../services/orders.service';
 import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
-
+import {MatCardModule} from '@angular/material/card';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',

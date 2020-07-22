@@ -1,29 +1,38 @@
 
-
-
-  <form class="modal-body" #loginForm="ngForm" (submit)="login(loginForm)">
-    <div class="md-form mb-5">
-      <input class="form-control validate white-text" type="email" name="email" ngModel placeholder="Email" required email>
-    </div>
- 
-    <div class="md-form mb-5">
-      <input class="form-control validate white-text" type="password" name="password" ngModel placeholder="Contraseña" required>
-      <p class="font-small blue-text d-flex justify-content-end">Forgot <a href="#" class="blue-text ml-1">
-        Password?</a></p>
-    </div>
- 
-    <div class="row d-flex align-items-center mb-4">
-      <div class="text-center mb-3 col-md-12">
-        <button type="submit" class="btn btn-success btn-block btn-rounded z-depth-1">Logearse</button>
+<div class="container">
+  <h2>LOGIN</h2>
+  <div class="row">
+    <form class="modal-body col-6" #loginForm="ngForm" (submit)="login(loginForm)">
+      <div class="md-form mb-5">
+        <input class="form-control validate white-text" type="email" name="email" ngModel placeholder="Email" required email>
       </div>
+   
+      <div class="md-form mb-5">
+        <input class="form-control validate white-text" type="password" name="password" ngModel placeholder="Contraseña" required>
+        <p class="font-small blue-text d-flex justify-content-end">Forgot <a href="#" class="blue-text ml-1">
+          Password?</a></p>
+      </div>
+   
+      <div class="row d-flex align-items-center mb-4">
+        <div class="text-center mb-3 col-md-12">
+          <button type="submit" class="btn btn-success btn-block btn-rounded z-depth-1">Logearse</button>
+        </div>
+      </div>
+      
+      <div>
+          <p>Aún no eres miembro? <a [routerLink]="'/register'" class="blue-text"> Registro</a></p>
+          <p class="font-small blue-text d-flex ">Forgot <a href="#" class="blue-text ml-1">Password?</a></p>
+      </div>
+    </form>
+    <div class="col-6">
+      <p>HOLA</p>
     </div>
-    
-    <div>
-        <p>Aún no eres miembro? <a [routerLink]="'/register'" class="blue-text"> Registro</a></p>
-        <p class="font-small blue-text d-flex ">Forgot <a href="#" class="blue-text ml-1">Password?</a></p>
-    </div>
- 
-  </form>
+  </div>
+  <div>
+
+</div>
+
+</div>
 
 
 

@@ -1,6 +1,7 @@
-<h2>Carrito de la compra</h2>
+<!-- <h2>Carrito de la compra</h2>
 <form (submit)="insertOrder($event)">
     <div *ngFor="let product of this.cartService.productsInCart">
+        <img style="width: 150px"class="product-img" [src]="product.image_path" alt="" [routerLink]="'/details/' + product._id" alt={{product.name}}>
         <p>{{ product.name }}</p>
         <p>{{ product.price }} €</p>
         <p>Units <input type="number" min="1" value=1></p>
@@ -12,6 +13,37 @@
         <p>TOTAL: {{ total }} €</p>
     </div>
     <button type="submit">COMPRAR</button>
-</form>
+</form> -->
 
-    
+<div class="container">
+    <h2>Carrito de la compra</h2>
+    <div class="row">
+        <form class="modal-body col-6" (submit)="insertOrder($event)">
+            <div *ngFor="let product of this.cartService.productsInCart">    
+                <table>
+                    <tr>
+                    <th>Product Detail</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    </tr>
+                    <tr>
+                    <td>
+                        <img style="width: 150px"class="product-img" [src]="product.image_path" alt="" [routerLink]="'/details/' + product._id" alt={{product.name}}>
+                        <p>{{ product.name }}</p>
+                    </td>
+                    <td><input type="number" min="1" value=1> units</td>
+                    <td>{{ product.price * 1}} €</td>
+                    </tr>
+                </table>
+                <button (click)="deleteProduct(product._id)">Delete product</button>
+                <br/>
+            </div>
+            
+        </form>
+        <div class="col-6">
+            <div>
+                <p>TOTAL: {{ total }} €</p>
+            </div>
+            <button type="submit">COMPRAR</button>
+        </div>
+    </div>

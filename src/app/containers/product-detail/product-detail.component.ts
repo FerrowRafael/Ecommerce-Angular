@@ -18,6 +18,7 @@ export class ProductDetailComponent implements OnInit {
 
   detalle: any;
   product: any;
+  products: '';
   public message: string;
   public errorMsg: string;
   public successMsg: string;
@@ -40,6 +41,7 @@ export class ProductDetailComponent implements OnInit {
       
       console.log(this.product);
     });
+    this.AllProducts();
   }
 
   detailsById(id: number) {
@@ -58,4 +60,10 @@ export class ProductDetailComponent implements OnInit {
     localStorage.setItem('cart', JSON.stringify(this.cartService.productsInCart))
   }
 
+  AllProducts() {
+    this.productsService.getProductsAll().subscribe((product: any) => {
+      this.products = product;
+      console.log(product);
+    });
+  } 
 }

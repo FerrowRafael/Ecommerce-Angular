@@ -1,3 +1,38 @@
-.product-img{
-    width: 500px;
+// .product-img{
+//     max-width: 300px;
+//     max-height: 300px;
+//     margin-left: 30px;
+//     margin-top: 10px
+
+// }
+main{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.mat-card {
+    border-radius: 15px;
+    margin: 10px;
+}
+
+.element.style {
+    margin: 10px
+}
+
+.imgHome{
+    width:90%;
+    margin-left: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mat-elevation-z4{
+    img:hover {
+        transform: scale(0.95); 
+        opacity: 0.8;
+    }
+}
+
+.svg-inline--fa.fa-w-14 {
+    width: 5em;
 }
