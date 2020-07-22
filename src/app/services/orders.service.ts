@@ -35,7 +35,7 @@ export class OrdersService {
   }
 
   // 3 ORDER ADD
-  getOrderCreate(order): Observable<object>{
+  OrderCreate(order): Observable<object>{
       return this.http.post<Order>(`${this.BASE}orders/add`, order, {
         headers: {
           Authorization: localStorage.getItem('authToken') || ''
@@ -44,12 +44,12 @@ export class OrdersService {
   }
 
   // 4 ORDER UPDATE
-  getOrderUpdate(id: number, body: any){
+  OrderUpdate(id: number, body: any){
     return this.http.get(`${this.BASE}orders/update/id/${id}`, body);
   }
 
   // 5 ORDER DELETE
-  getOrderDelete(id: number){
+  OrderDelete(id: number){
     return this.http.get(`${this.BASE}orders/delete/id/${id}`);
   }
 

@@ -1,11 +1,17 @@
 <h2>Carrito de la compra</h2>
+<form (submit)="insertOrder($event)">
+    <div *ngFor="let product of this.cartService.productsInCart">
+        <p>{{ product.name }}</p>
+        <p>{{ product.price }} €</p>
+        <p>Units <input type="number" min="1" value=1></p>
+        <p>{{ product.price * 1}} </p>
+        <button (click)="deleteProduct(product._id)">Delete product</button>
+        <br/>
+    </div>
+    <div>
+        <p>TOTAL: {{ total }} €</p>
+    </div>
+    <button type="submit">COMPRAR</button>
+</form>
 
-<div *ngFor="let product of this.cartService.productsInCart">
-    <p>{{ product.name }}</p>
-    <p>{{ product.price }} €</p>
-    <p>Units: </p>
-    <br/>
-</div>
-<div>
-    <p>TOTAL:</p>
-</div>
+    

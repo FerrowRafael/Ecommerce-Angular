@@ -1,18 +1,12 @@
 
 <header class="header">
+    <div>
 
-    <section class="logo">
-        
-        <img class="logo-header"routerLink="home" src="https://vignette.wikia.nocookie.net/mario/images/8/80/215px-Shyguy_MP9.png/revision/latest/top-crop/width/360/height/450?cb=20130114205419&path-prefix=es" alt="movit-logo">
+        <img class="logo-header"routerLink="home" routerLink="home" routerLinkActive="active" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Google_Lens_-_new_logo.png/600px-Google_Lens_-_new_logo.png" alt="movit-logo">
 
-    </section>
+        <a routerLink="home" routerLinkActive="active">Home</a>
+    </div>
 
-    <ul>
-        <li>
-            <a routerLink="home" routerLinkActive="active">Home</a>
-        </li>
-
-    </ul>
 
     <!-- SIN LOGEAR -->
     <div  class="register" *ngIf="!usersService.getUser()">
@@ -24,15 +18,15 @@
     <div class="userZone login-header" *ngIf="usersService.getUser() as user">
         <a class="bt-rent" (click)="logout()">LOGOUT</a>
         <div *ngIf="usersService.getUser().role == 'user'">
-            <a [routerLink]="['/profile']" class="material-icons search-icon" routerLinkActive="active"><!--{{user.username}}--><span>User Profile</span></a>
+            <a [routerLink]="['/profile']" routerLinkActive="active"><!--{{user.username}}--><span>User Profile</span></a>
         </div>
         <div *ngIf="usersService.getUser().role == 'admin'">
-            <a [routerLink]="['/adminProfile']" class="material-icons search-icon" routerLinkActive="active"><!--{{user.username}}--><span>Admin Profile</span></a>
+            <a [routerLink]="['/adminProfile']" routerLinkActive="active"><!--{{user.username}}--><span>Admin Profile</span></a>
         </div>
         <div *ngIf="usersService.getUser().role == 'seller' ">
-            <a [routerLink]="['/sellerProfile']" class="material-icons search-icon" routerLinkActive="active"><!--{{user.username}}--><span>Seller Profile</span></a>
+            <a [routerLink]="['/sellerProfile']" routerLinkActive="active"><!--{{user.username}}--><span>Seller Profile</span></a>
         </div>
-        <a [routerLink]="['/cart']" class="material-icons search-icon" routerLinkActive="active"><!--{{user.username}}--><span>Cart</span></a>
+        <a [routerLink]="['/cart']" routerLinkActive="active"><!--{{user.username}}--><span>Cart</span></a>
     </div>
     
 </header>
