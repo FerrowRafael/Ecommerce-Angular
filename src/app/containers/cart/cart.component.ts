@@ -20,7 +20,6 @@ export class CartComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.productsCart()
     this.total = this.cartService.productsInCart.reduce((
       acc,
       obj,
@@ -50,16 +49,10 @@ export class CartComponent implements OnInit {
   });
   }
   insertOrder(event: any) {
-    // let cartProduct = this.mapCartProducts(localStorage.getItem('cart'))
     const order = {
       total: this.total,
       status: "pending",
-      // productIds: [{
-      //   name: cartProduct.name,
-      //   _id: cartProduct._id,
-      //   unit: 1,
-      //   subtotal: cartProduct.prize * 1
-      // }]
+      /**/ 
     }
     console.log(order)
     this.orderService.OrderCreate(order)

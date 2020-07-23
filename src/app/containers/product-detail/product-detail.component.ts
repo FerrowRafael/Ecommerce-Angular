@@ -56,7 +56,6 @@ export class ProductDetailComponent implements OnInit {
     console.log(product)
     if (this.cartService.productsInCart.find((p)=>p._id==product?._id))return;
     this.cartService.productsInCart.push(product);
-    console.log("UN producto")
     localStorage.setItem('cart', JSON.stringify(this.cartService.productsInCart))
   }
 

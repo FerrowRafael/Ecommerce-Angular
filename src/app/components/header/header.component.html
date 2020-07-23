@@ -1,6 +1,6 @@
 
 <header class="header">
-    <img class="logo-header"routerLink="home" routerLink="home" routerLinkActive="active" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Google_Lens_-_new_logo.png/600px-Google_Lens_-_new_logo.png" alt="movit-logo">
+    <!-- <img class="logo-header"routerLink="home" routerLink="home" routerLinkActive="active" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Google_Lens_-_new_logo.png/600px-Google_Lens_-_new_logo.png" alt="movit-logo"> -->
     <div class="userZone login-header">
         <a routerLink="home" routerLinkActive="active">Home</a>
         <a routerLink="results" routerLinkActive="active">Results</a>
@@ -14,7 +14,7 @@
 
     <!-- LOGEADO -->
     <div class="userZone" *ngIf="usersService.getUser() as user">
-        <a class="bt-rent" (click)="logout()">LOGOUT</a>
+        
         <div class="userZone" *ngIf="usersService.getUser().role == 'user'">
             <a [routerLink]="['/profile']" routerLinkActive="active"><!--{{user.username}}--><span>User Profile</span></a>
         </div>
@@ -27,6 +27,7 @@
         <a [routerLink]="['/cart']" routerLinkActive="active"><!--{{user.username}}-->
             <i class="fas fa-shopping-cart"></i>
         </a>
+        <a class="bt-rent" (click)="logout()">LOGOUT</a>
     </div>
     
 </header>

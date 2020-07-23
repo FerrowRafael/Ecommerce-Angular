@@ -1,33 +1,47 @@
-<div>
-    <h2>Perfil</h2>
-    <p>{{ users._id }}</p>
-    <p>{{ users.userName }}</p>
-    <p>{{ users.email }}</p>
-    <p>{{ users.role }}</p>
-    <button>Editar perfil</button>
-</div>  
+<h2>Perfil Usuario</h2>
 
-<!-- ENLACES -->
-<nav class="sidebar d-flex flex-column align-items-end justify-content-center w-25 h-100 m-0 p-3">
+<div nz-row class="sellerProfile">
+    <div nz-col nzSpan="6" class="lateral">
+        <button (click)="toggle()" id="bt">
+            {{buttonName}}
+        </button>
+        <!-- ENLACES -->
+        <!-- <nav class="sidebar d-flex flex-column align-items-end justify-content-center w-25 h-100 m-0 p-3">
 
-    <ul class="bt-sidebar-list d-flex d-flex flex-column justify-content-center align-items-end">
-
-        <li><a class="bt-sidebar" routerLink="/profile/data" routerLinkActive="active">Mis datos</a></li>
-        <li><a class="bt-sidebar" routerLink="/profile/order" routerLinkActive="active">Mis pedidos</a></li>
-        <li><a class="bt-sidebar"routerLink="/profile/update" routerLinkActive="active">Modificar mis datos</a></li>
-    </ul>
-</nav>
-
-<!-- MIS PEDIDOS -->
-<div>
-    <h2>Pedidos</h2>
-    <p>{{ orders.total }}</p> -->
-    <p>Status: {{ orders.status }}</p>
-    <p>{{ orders.deliveryDate }}</p>
-    <div *ngFor="let order of orders.productIds | slice:0:20">
-        <div> 
-            <p class="order-name">{{ order.unit }}</p>
+            <ul class="bt-sidebar-list d-flex d-flex flex-column justify-content-center align-items-end">
+        
+                <li><a class="bt-sidebar" routerLink="/profile/data" routerLinkActive="active">Mis datos</a></li>
+                <li><a class="bt-sidebar" routerLink="/profile/order" routerLinkActive="active">Mis pedidos</a></li>
+                <li><a class="bt-sidebar"routerLink="/profile/update" routerLinkActive="active">Modificar mis datos</a></li>
+            </ul>
+        </nav> -->
+    </div>
+    <div nz-col nzSpan="15" *ngIf="!show">
+        <h2>Perfil</h2>
+        <p>{{ users._id }}</p>
+        <p>{{ users.userName }}</p>
+        <p>{{ users.email }}</p>
+        <p>{{ users.role }}</p>
+        <button>Editar perfil</button>
+    </div>  
+    <div nz-col nzSpan="18" >
+        <div *ngIf="show">
+            <h2>Pedidos</h2>
+            <p>{{ orders.total }}</p>
+            <p>Status: {{ orders.status }}</p>
+            <p>{{ orders.deliveryDate }}</p>
+            <div *ngFor="let order of orders.productIds | slice:0:20">
+                <div> 
+                    <p class="order-name">{{ order.unit }}</p>
+                </div>
+            </div>
+            <button>Editar perfil</button>
         </div>
     </div>
-    <button>Editar perfil</button>
-</div>  
+
+    <div>
+        <h3 *ngIf="show">Modificar datos</h3>
+    </div>
+</div>
+
+

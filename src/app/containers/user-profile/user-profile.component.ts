@@ -13,6 +13,8 @@ export class UserProfileComponent implements OnInit {
   orders: any;
   token = localStorage.getItem('authToken');
   id: '';
+  public show:boolean = false;
+  public buttonName:any = 'Show';
 
   constructor(
     private usersService: UsersService,
@@ -35,5 +37,14 @@ export class UserProfileComponent implements OnInit {
       this.orders = order;
       console.log(order);
     });
+  }
+
+  toggle() {
+    this.show = !this.show;
+    // CHANGE THE NAME OF THE BUTTON.
+    // if(this.show)  
+    //   this.buttonName = "Hide";
+    // else
+    //   this.buttonName = "Show";
   }
 }

@@ -1,11 +1,13 @@
 @import '../../../colors.scss';
 .header {
+    background-image: url(https://media.captureone.com/cache/5/6/e/c/b/b/56ecbb60aada139fe296c3eb1e0818771554ac47.png);
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: $darkblue;
+    justify-content: center;
+    background-position: center;
     color: $white;
-    height: 60px;
+    height: 50em;
     font-size: 1rem;
     border-bottom-left-radius: 2em;
     border-bottom-right-radius: 2em;
@@ -22,12 +24,12 @@
         padding: 0.8em;
         cursor: pointer;
         transition: all 0.8s;
-        &:hover {
-            background-color: $lightblue;
-        }
-        &.active {
-            background-color: $lightblue;
-        }
+        // &:hover {
+        //     background-color: $lightblue;
+        // }
+        // &.active {
+        //     background-color: $lightblue;
+        // }
     }
 
     .logo-header{
