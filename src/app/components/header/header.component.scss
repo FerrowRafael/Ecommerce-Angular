@@ -24,19 +24,19 @@
         padding: 0.8em;
         cursor: pointer;
         transition: all 0.8s;
-        // &:hover {
-        //     background-color: $lightblue;
-        // }
-        // &.active {
-        //     background-color: $lightblue;
-        // }
+        span:hover {
+            background-color: $lightblue;
+        }
     }
+    
+        
 
     .logo-header{
         width: 60px;
     }
 
-    .fa-shopping-cart{
-        height: 1.4em;
-    }
+    
+}
+.fa-shopping-cart{
+    height: 1em;
 }

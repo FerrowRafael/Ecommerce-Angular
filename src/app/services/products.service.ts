@@ -30,12 +30,14 @@ export class ProductsService {
     });
   }
 
-  ProductUpdate(id: number){
-    return this.http.get(`${this.BASE}products/update/id/${id}`, {
-      headers: {
-        Authorization: localStorage.getItem('authToken') || ''
-      }
-    });
+  ProductUpdate(product, id: number){
+    return this.http.get(`${this.BASE}products/update/id/${id}`, product, 
+    // {
+    //   headers: {
+    //     Authorization: localStorage.getItem('authToken') || ''
+    //   }
+    // }
+    );
   }
 
   ProductDelete(id: number){

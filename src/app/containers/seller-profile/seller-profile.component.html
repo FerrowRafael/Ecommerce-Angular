@@ -6,14 +6,15 @@
             {{buttonName}}
         </button>
     </div>
-    <div nz-col nzSpan="15" *ngIf="!show">
+    <div nz-col nzSpan="6" *ngIf="!show">
         <h2>Perfil</h2>
         <p>Nombre vendedor: {{ users.userName }}</p>
         <p>Email contacto: {{ users.email }}</p>
         <button>Editar perfil</button>
     </div>  
-    <div nz-col nzSpan="18" >
+    <div nz-col nzSpan="6" >
         <app-create-product *ngIf="show"></app-create-product>
+        <app-update-product *ngIf="show"></app-update-product>
     </div>
 </div>
 

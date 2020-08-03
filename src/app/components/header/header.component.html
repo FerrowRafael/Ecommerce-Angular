@@ -2,8 +2,8 @@
 <header class="header">
     <!-- <img class="logo-header"routerLink="home" routerLink="home" routerLinkActive="active" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Google_Lens_-_new_logo.png/600px-Google_Lens_-_new_logo.png" alt="movit-logo"> -->
     <div class="userZone login-header">
-        <a routerLink="home" routerLinkActive="active">Home</a>
-        <a routerLink="results" routerLinkActive="active">Results</a>
+        <a routerLink="home" routerLinkActive="active"><span>Home</span></a>
+        <a routerLink="results" routerLinkActive="active"><span>Results</span></a>
     </div>
 
     <!-- SIN LOGEAR -->
@@ -16,18 +16,23 @@
     <div class="userZone" *ngIf="usersService.getUser() as user">
         
         <div class="userZone" *ngIf="usersService.getUser().role == 'user'">
-            <a [routerLink]="['/profile']" routerLinkActive="active"><!--{{user.username}}--><span>User Profile</span></a>
+            <a [routerLink]="['/profile']" routerLinkActive="active"><span>User Profile</span></a>
         </div>
         <div class="userZone" *ngIf="usersService.getUser().role == 'admin'">
-            <a [routerLink]="['/adminProfile']" routerLinkActive="active"><!--{{user.username}}--><span>Admin Profile</span></a>
+            <a [routerLink]="['/adminProfile']" routerLinkActive="active"><span>Admin Profile</span></a>
         </div>
         <div class="userZone" *ngIf="usersService.getUser().role == 'seller' ">
-            <a [routerLink]="['/sellerProfile']" routerLinkActive="active"><!--{{user.username}}--><span>Seller Profile</span></a>
+            <a [routerLink]="['/sellerProfile']" routerLinkActive="active"><span>Seller Profile</span></a>
         </div>
-        <a [routerLink]="['/cart']" routerLinkActive="active"><!--{{user.username}}-->
-            <i class="fas fa-shopping-cart"></i>
-        </a>
-        <a class="bt-rent" (click)="logout()">LOGOUT</a>
+        
+        <div matBadge="15" matBadgeColor="warn">
+            <a [routerLink]="['/cart']" routerLinkActive="active">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+        </div>
+        <div>
+            <a class="bt-rent userZone" (click)="logout()">LOGOUT</a>
+        </div>      
     </div>
     
 </header>
