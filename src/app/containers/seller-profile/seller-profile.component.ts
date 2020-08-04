@@ -3,6 +3,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { OrdersService } from 'src/app/services/orders.service';
 
+
 @Component({
   selector: 'app-seller-profile',
   templateUrl: './seller-profile.component.html',
@@ -11,9 +12,11 @@ import { OrdersService } from 'src/app/services/orders.service';
 export class SellerProfileComponent implements OnInit {
 
   users: any;
+  products: any;
   token = localStorage.getItem('authToken');
   public show:boolean = false;
   public buttonName:any = 'Show';
+  
   
   constructor(
     private usersService: UsersService,
@@ -23,14 +26,21 @@ export class SellerProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.UserInfo(this.token);
+    
   }
+
+
 
   UserInfo(token) {
     this.usersService.getUserInfo(token).subscribe((user: any) => {
       this.users = user;
+     
     });
   }
 
+  
+
+  // TOGGLE SHOW AND HIDE
   toggle() {
     this.show = !this.show;
 
@@ -40,4 +50,6 @@ export class SellerProfileComponent implements OnInit {
     else
       this.buttonName = "Show";
   }
+  
+  
 }

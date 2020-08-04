@@ -47,6 +47,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { SellerProductsComponent } from './components/seller-products/seller-products.component';
 //#region 
 
 @NgModule({
@@ -65,7 +67,8 @@ import { MatSelectModule } from '@angular/material/select';
     CreateProductComponent,
     UpdateProductComponent,
     SellerProfileComponent,
-    CartComponent
+    CartComponent,
+    SellerProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +85,9 @@ import { MatSelectModule } from '@angular/material/select';
     FlexLayoutModule,
     MatIconModule,
     MatBadgeModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule,
+
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

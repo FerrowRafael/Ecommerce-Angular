@@ -26,10 +26,10 @@ export class UpdateProductComponent implements OnInit {
   }
 
     // PRODUCT UPDATE
-    ProductUpdate(productForm: NgForm, id){
+    ProductUpdate(productForm: NgForm){
       const product = productForm.value;
-      console.log(product);
-      this.productsService.ProductUpdate(product, id)
+      console.log(product, product.id);
+      this.productsService.ProductUpdate(product, product.id)
         .subscribe(
           // (res: HttpResponse<any>) => {
           // // tslint:disable-next-line: no-string-literal

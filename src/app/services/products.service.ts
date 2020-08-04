@@ -31,12 +31,12 @@ export class ProductsService {
   }
 
   ProductUpdate(product, id: number){
-    return this.http.get(`${this.BASE}products/update/id/${id}`, product, 
-    // {
-    //   headers: {
-    //     Authorization: localStorage.getItem('authToken') || ''
-    //   }
-    // }
+    return this.http.put(`${this.BASE}products/update/id/${id}`, product, 
+    {
+      headers: {
+        Authorization: localStorage.getItem('authToken') || ''
+      }
+    }
     );
   }
 
@@ -75,5 +75,10 @@ export class ProductsService {
   getProductsByName(name: string){
     console.log(name)
     return this.http.get(`${this.BASE}products/searchMa/input/${name}`);
+  }
+
+  getProductsByUserId(userId: string){
+    console.log(userId)
+    return this.http.get(`${this.BASE}products/sellerAll/${userId}`);
   }
 }
