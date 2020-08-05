@@ -11,6 +11,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
+import { SellerProductsComponent } from './components/seller-products/seller-products.component';
 //#endregion
 
 //#region Containers
@@ -48,7 +49,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
-import { SellerProductsComponent } from './components/seller-products/seller-products.component';
+
 //#region 
 
 @NgModule({
@@ -68,7 +69,7 @@ import { SellerProductsComponent } from './components/seller-products/seller-pro
     UpdateProductComponent,
     SellerProfileComponent,
     CartComponent,
-    SellerProductsComponent
+    SellerProductsComponent,
   ],
   imports: [
     BrowserModule,

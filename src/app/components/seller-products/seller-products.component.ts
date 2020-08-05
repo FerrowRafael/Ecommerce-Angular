@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { User } from '../../models/user.model'
+import { Component } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -9,13 +7,24 @@ import { ProductsService } from 'src/app/services/products.service';
   templateUrl: './seller-products.component.html',
   styleUrls: ['./seller-products.component.scss']
 })
-export class SellerProductsComponent implements OnInit {
+export class SellerProductsComponent {
+  title:string = 'Angular Crud';
+  
+  msg:string = '';
 
-  users: any;
-  displayedColumns: string[] = ['id', 'name', 'image', 'price', 'update', 'delete'  ];
-  public dataSource = new MatTableDataSource<User>();
+  // employees = [
+  //   {'name': 'Fazt', id: 'manager', image:'https://srv.latostadora.com/designall.dll/uchiha_itachi--i:13562323972810135623191;b:f8f8f8;s:H_D1;f:f;k:39c45d8d97fe3799792b884f992e5fc9;p:1.jpg', price:'email@email.com'},
+  //   {'name': 'Juan', id: 'Designer', image:'https://srv.latostadora.com/designall.dll/uchiha_itachi--i:13562323972810135623191;b:f8f8f8;s:H_D1;f:f;k:39c45d8d97fe3799792b884f992e5fc9;p:1.jpg', price:'email@email.com'},
+  //   {'name': 'Pedro', id: 'Programmer', image:'https://srv.latostadora.com/designall.dll/uchiha_itachi--i:13562323972810135623191;b:f8f8f8;s:H_D1;f:f;k:39c45d8d97fe3799792b884f992e5fc9;p:1.jpg', price:'email@email.com'}
+  // ];
+
+  model:any = {};
+  model2:any = {};
+  hideUpdate:boolean = true;
   token = localStorage.getItem('authToken');
-
+  users: any;
+  products: any;
+  
   constructor(
     private usersService: UsersService,
     private productsService: ProductsService,
@@ -31,15 +40,49 @@ export class SellerProductsComponent implements OnInit {
       this.users = user;
       console.log(this.users)
       this.productsService.getProductsByUserId(this.users._id)
-      .subscribe(res => {
-        this.dataSource.data = res as User[];
+      .subscribe((product: any) => {
+        this.products = product;
+        
       })
     })
   }
 
-  public redirectToUpdate = (id: string) => { 
+  addProduct():void{
+    this.products.push(this.model);
+    this.msg = 'campo agregado';
   }
- 
-  public redirectToDelete = (id: string) => { 
+
+  deleteProduct(i):void {
+    var answer = confirm('Estas seguro querer eliminarlo?');
+    if(answer) {
+      this.products.splice(i, 1);
+      this.msg = 'campo eliminado';
+    }
   }
+
+  myValue;
+  editProduct(i):void {
+    this.hideUpdate = false;
+    this.model2._id = this.products[i]._id;
+    this.model2.name = this.products[i].name;
+    this.model2.image = this.products[i].image_path;
+    this.model2.price = this.products[i].price;
+    this.myValue = i;
+  }
+
+  updateProduct():void {
+    let i = this.myValue;
+    for(let j = 0; j < this.products.length; j++){
+      if(i == j) {
+        this.products[i] = this.model2;
+        this.msg = 'campo actualizado';
+        this.model2 = {};
+      }
+    }
+  }
+
+  closeAlert():void {
+    this.msg = '';
+  }
+
 }

@@ -1,17 +1,24 @@
-table {
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    min-width: 500px;
+.app {
+    border-radius: 4px;
+    margin-top: 20px;
+    padding: 30px;
+    background: #fff;
 }
- 
-th.mat-header-cell {
+
+.table{
+    width: 70em;
+}
+
+thead {
     text-align: left;
     max-width: 300px;
     background-color: brown;
     color: white;
 }
 
-.mat-elevation-z8{
-    width: 1300px;
+.table td, .table th {
+    padding: 0.5rem;
+    vertical-align: middle;
+    text-align: center;
+
 }

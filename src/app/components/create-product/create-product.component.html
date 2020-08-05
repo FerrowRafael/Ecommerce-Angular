@@ -3,10 +3,10 @@
     <h2>Create Product</h2>
     <div class="row">
         <form class="modal-body col-6"#productForm="ngForm" (submit)="ProductCreate(productForm)">
-            <!-- <mat-form-field class="md-form mb-5">
+             <mat-form-field class="md-form mb-5">
                 <mat-label>ID</mat-label>
                 <input matInput type="text" name="id" #name="ngModel" id="id" ngModel>
-            </mat-form-field> -->
+            </mat-form-field> 
             <mat-form-field class="md-form mb-5">
                 <mat-label>Name</mat-label>
                 <input matInput type="text" name="name" #name="ngModel" id="name" ngModel>
@@ -38,14 +38,15 @@
                   </mat-option>
                 </mat-select>
             </mat-form-field>
-            <button type="submit">Create Product</button>
-            <!-- Mensajes 
+            <!-- <button type="submit">Create Product</button>
+             Mensajes 
             <div class="succesmessage" *ngIf="successMsg">
                 {{successMsg}}  
             </div>
             <div class="errormessage">
                 {{errorMsg}}
-            </div> -->
+            </div>  -->
         </form>
     </div>
 </div>
+
