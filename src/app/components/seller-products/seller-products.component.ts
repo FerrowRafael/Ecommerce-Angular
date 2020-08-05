@@ -49,14 +49,24 @@ export class SellerProductsComponent {
 
   addProduct():void{
     this.products.push(this.model);
-    this.msg = 'campo agregado';
+    this.productsService.addProduct(this.model)
+        .subscribe(res => {
+          console.log(res)
+    })
+    this.msg = 'Producto añadido';
   }
 
   deleteProduct(i):void {
     var answer = confirm('Estas seguro querer eliminarlo?');
     if(answer) {
+      let id = this.products[i]._id;
+        this.productsService.ProductDelete(id)
+        .subscribe((product: any) => {
+        console.log(product);})
       this.products.splice(i, 1);
-      this.msg = 'campo eliminado';
+      this.msg = 'Producto eliminado';
+      console.log(i)
+        
     }
   }
 
@@ -65,6 +75,7 @@ export class SellerProductsComponent {
     this.hideUpdate = false;
     this.model2._id = this.products[i]._id;
     this.model2.name = this.products[i].name;
+    this.model2.description = this.products[i].description;
     this.model2.image = this.products[i].image_path;
     this.model2.price = this.products[i].price;
     this.myValue = i;
@@ -75,10 +86,15 @@ export class SellerProductsComponent {
     for(let j = 0; j < this.products.length; j++){
       if(i == j) {
         this.products[i] = this.model2;
-        this.msg = 'campo actualizado';
+        let id = this.model2._id
+        this.productsService.ProductUpdate(this.model2, id)
+        .subscribe((product: any) => {
+        console.log(product);
+      });
+        this.msg = 'Producto actualizado';
         this.model2 = {};
       }
-    }
+    } 
   }
 
   closeAlert():void {
