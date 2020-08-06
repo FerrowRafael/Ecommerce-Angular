@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { ProductsService } from 'src/app/services/products.service';
+import { CategoriesService} from 'src/app/services/categories.service'
 
 @Component({
   selector: 'app-seller-products',
@@ -12,22 +13,18 @@ export class SellerProductsComponent {
   
   msg:string = '';
 
-  // employees = [
-  //   {'name': 'Fazt', id: 'manager', image:'https://srv.latostadora.com/designall.dll/uchiha_itachi--i:13562323972810135623191;b:f8f8f8;s:H_D1;f:f;k:39c45d8d97fe3799792b884f992e5fc9;p:1.jpg', price:'email@email.com'},
-  //   {'name': 'Juan', id: 'Designer', image:'https://srv.latostadora.com/designall.dll/uchiha_itachi--i:13562323972810135623191;b:f8f8f8;s:H_D1;f:f;k:39c45d8d97fe3799792b884f992e5fc9;p:1.jpg', price:'email@email.com'},
-  //   {'name': 'Pedro', id: 'Programmer', image:'https://srv.latostadora.com/designall.dll/uchiha_itachi--i:13562323972810135623191;b:f8f8f8;s:H_D1;f:f;k:39c45d8d97fe3799792b884f992e5fc9;p:1.jpg', price:'email@email.com'}
-  // ];
-
   model:any = {};
   model2:any = {};
   hideUpdate:boolean = true;
   token = localStorage.getItem('authToken');
   users: any;
   products: any;
+  categories: any;
   
   constructor(
     private usersService: UsersService,
     private productsService: ProductsService,
+    private categoriesService: CategoriesService,
   ) { }
 
   ngOnInit(): void {
@@ -42,18 +39,24 @@ export class SellerProductsComponent {
       this.productsService.getProductsByUserId(this.users._id)
       .subscribe((product: any) => {
         this.products = product;
-        
       })
-    })
+      this.categoriesService.getCategoriesAll()
+      .subscribe((category: any) => {
+        this.categories = category;
+      })
+  })
   }
+  
 
   addProduct():void{
     this.products.push(this.model);
+    console.log(this.model)
     this.productsService.addProduct(this.model)
         .subscribe(res => {
           console.log(res)
     })
     this.msg = 'Producto añadido';
+    this.ProductsByUserId(this.token)
   }
 
   deleteProduct(i):void {

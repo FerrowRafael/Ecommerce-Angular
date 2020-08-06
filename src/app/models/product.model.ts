@@ -6,5 +6,5 @@ export interface Product {
     image_path: string;
     stock: number;
     popularity: number;
-    category: number;
+    category: string;
 }
