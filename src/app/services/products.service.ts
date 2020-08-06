@@ -9,6 +9,7 @@ import { Product } from '../models/product.model';
 export class ProductsService {
 
   BASE = 'http://localhost:3001/';
+  public product;
 
   constructor(
     private http: HttpClient
@@ -80,5 +81,9 @@ export class ProductsService {
   getProductsByUserId(userId: string){
     console.log(userId)
     return this.http.get(`${this.BASE}products/sellerAll/${userId}`);
+  }
+
+  setProduct(product) {
+    this.product = product;
   }
 }

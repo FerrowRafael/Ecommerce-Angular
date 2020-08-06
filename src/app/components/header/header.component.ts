@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
   private token: any;
   title: '';
   products: '';
+  
 
   constructor(
     public usersService: UsersService,
@@ -54,5 +55,25 @@ export class HeaderComponent implements OnInit {
       this.products = product;
     });
   }
-
+  getAllProducts() {
+    this.productsService.getProductsAll()
+      .subscribe(res => {
+        this.productsService.product = res
+      })
+  }
+  search(event) {
+    console.log(event.target.value)
+    if (!event.target.value) {
+      return this.getAllProducts();
+    }
+      this.productsService.getProductsByName(event.target.value)
+      .subscribe(
+        (res: HttpResponse<any>)  =>{
+          this.productsService.product = res
+          console.log(res)
+        } ,
+        
+        (error: HttpErrorResponse) => console.error(error)
+        );
+  }
 }

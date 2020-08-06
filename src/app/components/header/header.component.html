@@ -4,7 +4,14 @@
     <div class="userZone login-header">
         <a routerLink="home" routerLinkActive="active"><span>Home</span></a>
         <a routerLink="results" routerLinkActive="active"><span>Results</span></a>
-        
+        <div class="buscadorNav navbar">
+            <p class="control has-icons-left has-icons-right">
+                <input class="input is-rounded" (keyup)="search($event)" type="text" placeholder="Search a product...">
+                <span class="icon is-small is-left">
+            <i class="fas fa-search"></i>
+        </span>
+            </p>
+        </div>
     </div>
 
     <!-- SIN LOGEAR -->
