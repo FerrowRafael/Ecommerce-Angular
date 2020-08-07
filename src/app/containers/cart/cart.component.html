@@ -17,9 +17,9 @@
 
 <div class="container">
     <h2>Carrito de la compra</h2>
-    <div class="row">
-        <form class="modal-body col-8" (submit)="insertOrder($event)">
-            <div *ngFor="let product of this.cartService.productsInCart">    
+    <div >
+        <form class="row" (submit)="insertOrder($event)">
+            <div class="modal-body col-8" *ngFor="let product of this.cartService.productsInCart">    
                 <table>
                     <tr>
                     <th>Product Detail</th>
@@ -31,19 +31,19 @@
                         <img style="width: 150px"class="product-img" [src]="product.image_path" alt="" [routerLink]="'/details/' + product._id" alt={{product.name}}>
                         <p>{{ product.name }}</p>
                     </td>
-                    <td><input type="number" min="1" value=1> units</td>
+                    <td><input type="number" min="1" value=1 id="quantity"> units</td>
                     <td>{{ product.price * 1}} €</td>
                     </tr>
                 </table>
                 <button (click)="deleteProduct(product._id)">Delete product</button>
                 <br/>
             </div>
-            
-        </form>
-        <div class="col-4 total">
-            <div>
-                <h3><strong>TOTAL: {{ total }} €</strong></h3>
+            <div class="col-4 total">
+                <div>
+                    <h3><strong>TOTAL: {{ total }} €</strong></h3>
+                </div>
+                <button type="submit">COMPRAR</button>
             </div>
-            <button type="submit">COMPRAR</button>
-        </div>
+        </form>
+        
     </div>

@@ -32,10 +32,12 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.token = localStorage.getItem('authToken');
+    
     this.usersService.logout(this.token)
       .subscribe(
         (res: User) => {
           localStorage.removeItem('authToken');
+          localStorage.setItem('cart', "");
           this.usersService.setUser(null);
           setTimeout(() => {
           this.router.navigate(['login']);

@@ -20,7 +20,6 @@ import { RegisterComponent } from './containers/user/register/register.component
 import { LoginComponent } from './containers/user/login/login.component';
 import { ProductDetailComponent } from './containers/product-detail/product-detail.component';
 import { AdminProfileComponent } from './containers/admin-profile/admin-profile.component';
-import { PurchaisingProcessComponent } from './containers/purchaising-process/purchaising-process.component';
 import { ResultsComponent } from './containers/results/results.component';
 import { UserProfileComponent } from './containers/user-profile/user-profile.component';
 import { SellerProfileComponent } from './containers/seller-profile/seller-profile.component';
@@ -62,7 +61,6 @@ import { MatTableModule } from '@angular/material/table';
     HeaderComponent,
     ProductDetailComponent,
     AdminProfileComponent,
-    PurchaisingProcessComponent,
     ResultsComponent,
     UserProfileComponent,
     CreateProductComponent,

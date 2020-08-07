@@ -32,10 +32,8 @@ export class SellerProductsComponent {
   }
 
   ProductsByUserId(token) {
-    console.log(token)
     this.usersService.getUserInfo(token).subscribe((user: any) => {
       this.users = user;
-      console.log(this.users)
       this.productsService.getProductsByUserId(this.users._id)
       .subscribe((product: any) => {
         this.products = product;
@@ -44,10 +42,9 @@ export class SellerProductsComponent {
       .subscribe((category: any) => {
         this.categories = category;
       })
-  })
+    })
   }
   
-
   addProduct():void{
     this.products.push(this.model);
     console.log(this.model)
@@ -67,9 +64,7 @@ export class SellerProductsComponent {
         .subscribe((product: any) => {
         console.log(product);})
       this.products.splice(i, 1);
-      this.msg = 'Producto eliminado';
-      console.log(i)
-        
+      this.msg = 'Producto eliminado';        
     }
   }
 

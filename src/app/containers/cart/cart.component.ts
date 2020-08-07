@@ -48,13 +48,18 @@ export class CartComponent implements OnInit {
       return p;
   });
   }
-  insertOrder(event: any) {
+  insertOrder($event) {
+    console.log("Crear pedido")
     const order = {
       total: this.total,
       status: "pending",
-      /**/ 
+      productsIds: [
+        {
+          _id: 1,
+          unit: 1,
+          subtotal: 1 
+        }]
     }
-    console.log(order)
     this.orderService.OrderCreate(order)
       .subscribe((res: HttpResponse<any>)  => 
         this.router.navigate(['home'])
