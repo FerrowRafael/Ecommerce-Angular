@@ -38,6 +38,7 @@ export class HeaderComponent implements OnInit {
         (res: User) => {
           localStorage.removeItem('authToken');
           localStorage.setItem('cart', "");
+          localStorage.removeItem('cart');
           this.usersService.setUser(null);
           setTimeout(() => {
           this.router.navigate(['login']);

@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //#region Components
 import { AppComponent } from './app.component';
@@ -48,6 +48,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 //#region 
 
@@ -68,11 +70,11 @@ import { MatTableModule } from '@angular/material/table';
     SellerProfileComponent,
     CartComponent,
     SellerProductsComponent,
+ 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     HttpClientModule,
     NgZorroAntdModule,
     BrowserAnimationsModule,
@@ -86,7 +88,10 @@ import { MatTableModule } from '@angular/material/table';
     MatBadgeModule,
     MatSelectModule,
     MatTableModule,
-
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
