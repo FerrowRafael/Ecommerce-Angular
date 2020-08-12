@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { HttpClient } from '@angular/common/http';
 import { UsersService } from 'src/app/services/users.service';
@@ -23,9 +23,11 @@ export class SellerProductsComponent {
   categories: any;
   form: FormGroup;
 
-  //Previsualize
+  //File Preview
   imageURL: string;
   uploadForm: FormGroup;
+
+  @ViewChild('this.form.value') formValues;
   
   constructor(
     private usersService: UsersService,
@@ -56,8 +58,8 @@ export class SellerProductsComponent {
       this.productsService.getProductsByUserId(this.users._id)
       .subscribe((product: any) => {
         this.products = product;
-      })
-      console.log(this.products)
+        console.log(this.products)
+      }) 
       this.categoriesService.getCategoriesAll()
       .subscribe((category: any) => {
         this.categories = category;
@@ -65,22 +67,9 @@ export class SellerProductsComponent {
     })
   }
   
-  uploadFile(event) {
-    const file = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({
-      avatar: file
-    });
-    this.form.get('avatar').updateValueAndValidity()
-
-    // File Preview
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imageURL = reader.result as string;
-    }
-    reader.readAsDataURL(file)
-  }
-
-  submitForm() {
+  // CREATE PRODUCT
+  addProduct() {
+    console.log(this.form.value)
     var formData: any = new FormData();
     formData.append("name", this.form.get('name').value);
     formData.append("description", this.form.get('description').value);
@@ -94,24 +83,7 @@ export class SellerProductsComponent {
     .subscribe(res => {
     })
     this.ProductsByUserId(this.token);
-    // if (imageInput.files[0])
-  }
-
-  // CREATE PRODUCT
-  addProduct():void{
-    this.products.push(this.model);
-    const postFormData = new FormData();
-    console.log(event.target)
-    // this.renderImage(postFormData)
-    // postFormData.set('avatar', imageInput.files[0]);
-    postFormData.set('name', this.model.value.name);
-    postFormData.set('category', this.model.value.category);
-    postFormData.set('description', this.model.value.description);
-    this.productsService.addProduct(postFormData)
-    .subscribe(res => {
-    })
-    this.msg = 'Producto añadido';
-    this.ProductsByUserId(this.token)
+    this.formValues.resetForm();
     // if (imageInput.files[0])
   }
 
@@ -128,16 +100,7 @@ export class SellerProductsComponent {
     }
   }
 
-  editProduct(i):void {
-    this.hideUpdate = false;
-    this.model2._id = this.products[i]._id;
-    this.model2.name = this.products[i].name;
-    this.model2.description = this.products[i].description;
-    this.model2.image = this.products[i].image_path;
-    this.model2.price = this.products[i].price;
-    this.myValue = i;
-  }
-
+  // UPDATE PRODUCT
   updateProduct():void {
     let i = this.myValue;
     for(let j = 0; j < this.products.length; j++){
@@ -148,9 +111,39 @@ export class SellerProductsComponent {
         .subscribe((product: any) => {
       });
         this.msg = 'Producto actualizado';
-        this.model2 = {};
+      
       }
     } 
+    this.ProductsByUserId(this.token);
+  }
+
+  editProduct(i):void {
+    this.hideUpdate = false;
+    this.model2._id = this.products[i]._id;
+    this.model2.name = this.products[i].name;
+    this.model2.description = this.products[i].description;
+    this.model2.image = this.products[i].image_path;
+    this.model2.price = this.products[i].price;
+    this.model2.popularity = this.products[i].popularity;
+    this.model2.stock = this.products[i].stock;
+    this.model2.category = this.products[i].category;
+    this.myValue = i;
+  }
+
+  // IMAGE MANAGEMENT
+  uploadFile(event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({
+      avatar: file
+    });
+    this.form.get('avatar').updateValueAndValidity()
+
+    // File Preview
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imageURL = reader.result as string;
+    }
+    reader.readAsDataURL(file)
   }
 
   closeAlert():void {
