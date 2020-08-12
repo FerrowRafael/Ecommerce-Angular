@@ -22,6 +22,10 @@ export class SellerProductsComponent {
   products: any;
   categories: any;
   form: FormGroup;
+
+  //Previsualize
+  imageURL: string;
+  uploadForm: FormGroup;
   
   constructor(
     private usersService: UsersService,
@@ -53,6 +57,7 @@ export class SellerProductsComponent {
       .subscribe((product: any) => {
         this.products = product;
       })
+      console.log(this.products)
       this.categoriesService.getCategoriesAll()
       .subscribe((category: any) => {
         this.categories = category;
@@ -66,6 +71,13 @@ export class SellerProductsComponent {
       avatar: file
     });
     this.form.get('avatar').updateValueAndValidity()
+
+    // File Preview
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imageURL = reader.result as string;
+    }
+    reader.readAsDataURL(file)
   }
 
   submitForm() {
@@ -82,7 +94,7 @@ export class SellerProductsComponent {
     .subscribe(res => {
     })
     this.ProductsByUserId(this.token);
-// if (imageInput.files[0])
+    // if (imageInput.files[0])
   }
 
   // CREATE PRODUCT

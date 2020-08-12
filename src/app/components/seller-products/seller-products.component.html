@@ -12,33 +12,31 @@
     </div>   
 
   <!-- FORMULARIO CREAR PRODUCTO -->
-  <div class="row">
-    <div class="col-sm-8">
-      <form [formGroup]="form" (ngSubmit)="submitForm()">
-          <div class="form-group">
-              <input type="file" (change)="uploadFile($event)">
-          </div>
-          
+
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <h2>Create Product: </h2>
+      <div class="row">
+        <div class="col-6">
           <!-- NAME -->
           <p>
-          <mat-form-field class="inputLonger" appearance="outline">
+          <mat-form-field class="inputLonger1" appearance="outline">
             <mat-label>Name</mat-label>
             <input matInput placeholder="Name" formControlName="name">
           </mat-form-field>
           </p>
 
-          <p>
           <!-- DESCRIPTION -->
-          <mat-form-field class="inputLonger" appearance="outline">
+          <p>
+          <mat-form-field class="inputLonger1" appearance="outline">
             <mat-label>Description</mat-label>
             <textarea matInput placeholder="Description" formControlName="description"></textarea>
           </mat-form-field>
           </p>
 
-          <div class="row">
+          <div class="row ">
             <!-- PRICE -->
             <p>
-              <mat-form-field class="inputLonger" appearance="outline">
+              <mat-form-field class="inputLonger2" appearance="outline">
                 <mat-label>Price</mat-label>
                 <input matInput type="number" placeholder="Price" formControlName="price">
               </mat-form-field>
@@ -46,17 +44,17 @@
 
             <!-- STOCK -->
             <p>
-              <mat-form-field class="inputLonger" appearance="outline">
+              <mat-form-field class="inputLonger2" appearance="outline">
                 <mat-label>Stock</mat-label>
                 <input matInput type="number" placeholder="Stock" formControlName="stock">
               </mat-form-field>
             </p>
           </div>
 
-          <div class="row">
+          <div class="row ">
             <!-- POPULARITY -->
             <p>
-              <mat-form-field class="inputLonger" appearance="outline">
+              <mat-form-field class="inputLonger2" appearance="outline">
                 <mat-label>Popularity</mat-label>
                 <input matInput type="number" placeholder="Popularity" formControlName="popularity">
               </mat-form-field>
@@ -64,7 +62,7 @@
           
             <!-- CATEGORY -->
             <p>
-              <mat-form-field class="inputLonger" appearance="outline">
+              <mat-form-field class="inputLonger2" appearance="outline">
                 <mat-label>Category</mat-label>
                 <mat-select formControlName="category">
                   <mat-option *ngFor="let category of categories" [value]="category.name"  >
@@ -74,14 +72,30 @@
               </mat-form-field>
             </p>
           </div>
+        </div>
+        <!-- Rigth side -->
+        <div class="col-3">
+            <div>
+              <div class="form-group">
+                  <input type="file" accept="image/*" (change)="uploadFile($event)">
+              </div>
 
-          <!-- BUTTON -->
-          <div class="form-group">
-              <button class="btn btn-danger btn-block btn-lg">Create</button>
+              <!-- Image Preview -->
+              <div class="imagePreview">
+                <div  *ngIf="imageURL && imageURL !== ''">
+                  <img [src]="imageURL" width="300px" [alt]="uploadForm">
+                </div>
+              </div>
+            </div>
+
+            <!-- BUTTON -->
+            <div class="form-group">
+                <button class="btn btn-danger btn-block btn-lg">Create</button>
+            </div>
           </div>
-      </form>
-    </div>
-  </div>
+      </div>     
+    </form>
+  
     
       
     
@@ -123,78 +137,62 @@
       <div class="col-sm-5" [hidden]="hideUpdate">
         <h2>Update Product:</h2>
         <form class="form-horizontal">
-            <div class="form-group">
-                <label for="id" class="control-label col-sm-2">
-                ID
-                </label>
-                <div class="col-sm-10">
-                <input type="text" class="form-control" id="id"
-                    name="id" [(ngModel)]="model2._id"
-                    placeholder="Enter a New Id"
-                >
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="name" class="control-label col-sm-2">
-                Name
-                </label>
-                <div class="col-sm-10">
-                <input type="text" class="form-control" id="name"
-                    name="name" [(ngModel)]="model2.name"
-                    placeholder="Enter a New Name"
-                >
-                </div>
-            </div>
-        
-          <div class="form-group">
-            <label for="price" class="control-label col-sm-2">
-              Price
-            </label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="price"
+
+          <!-- ID -->
+          <mat-form-field class="inputLonger1" appearance="outline">
+            <mat-label>ID</mat-label>
+             <input matInput type="text" class="form-control" id="id"
+                name="id" [(ngModel)]="model2._id"
+                placeholder="Enter a New Id"
+              >
+          </mat-form-field>
+
+          <!-- NAME -->
+          <mat-form-field class="inputLonger1" appearance="outline">
+            <mat-label>Name</mat-label>
+              <input matInput type="text" class="form-control" id="name"
+              name="name" [(ngModel)]="model2.name"
+              placeholder="Enter a New Name">
+          </mat-form-field>
+
+          <!-- PRICE -->
+          <mat-form-field class="inputLonger1" appearance="outline">
+            <mat-label>Price</mat-label>
+              <input matInput type="text" class="form-control" id="price"
                 name="price" [(ngModel)]="model2.price"
                 placeholder="Enter a New Price"
               >
-            </div>
-          </div>
-          
-          <!-- Popularity -->
-          <div class="form-group">
-            <label for="popularity" class="control-label col-sm-2">
-            Popularity
-            </label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="popularity"
-                    name="popularity" [(ngModel)]="model.popularity"
-                    placeholder="Enter a New Popularity"
-                >
-            </div>
-        </div>
-
-        <!-- Stock -->
-        <div class="form-group">
-          <label for="stock" class="control-label col-sm-2">
-          Stock
-          </label>
-          <div class="col-sm-10">
-              <input type="text" class="form-control" id="stock"
-                  name="stock" [(ngModel)]="model.stock"
-                  placeholder="Enter a New Stock"
-              >
-          </div>
-        </div>
-
-        <!-- Category -->
-        <div class="form-group">
-          <mat-form-field appearance="fill">
-            <mat-label>Category</mat-label>
-            <mat-select id="category" name="category" [(ngModel)]="model.category">
-              <mat-option *ngFor="let category of categories" [value]="category.name"  >
-                {{category.name}}
-              </mat-option>
-            </mat-select>
           </mat-form-field>
-        </div>
+        
+          <!-- POPULARITY -->
+          <mat-form-field class="inputLonger1" appearance="outline">
+            <mat-label>Popularity</mat-label>
+              <input matInput type="text" class="form-control" id="popularity"
+                name="popularity" [(ngModel)]="model.popularity"
+                placeholder="Enter a New Popularity"
+              >
+          </mat-form-field>
+
+          <!-- STOCK -->
+          <mat-form-field class="inputLonger1" appearance="outline">
+            <mat-label>Stock</mat-label>
+              <input matInput type="text" class="form-control" id="stock"
+                    name="stock" [(ngModel)]="model.stock"
+                    placeholder="Enter a New Stock"
+                >
+          </mat-form-field>
+
+          <!-- CATEGORY -->
+          <div class="form-group">
+            <mat-form-field class="inputLonger1" appearance="outline">
+              <mat-label>Category</mat-label>
+              <mat-select id="category" name="category" [(ngModel)]="model.category">
+                <mat-option *ngFor="let category of categories" [value]="category.name"  >
+                  {{category.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
 
           <div class="form-group">
             <div class="col-sm-10 col-sm-offset-2">
