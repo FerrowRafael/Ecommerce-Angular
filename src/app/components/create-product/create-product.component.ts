@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { HttpClient } from '@angular/common/http';
+import { UsersService } from 'src/app/services/users.service';
 import { ProductsService } from 'src/app/services/products.service';
-import { CategoriesService } from 'src/app/services/categories.service';
-import { NgForm } from '@angular/forms';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { CategoriesService} from 'src/app/services/categories.service'
 
 @Component({
   selector: 'app-create-product',
@@ -11,47 +12,73 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 })
 export class CreateProductComponent implements OnInit {
 
-  public errorMsg: string;
-  public successMsg: string;
+  msg:string = '';
   selectedValue: string;
   message;
   categories;
+  form: FormGroup;
+
+  //File Preview
+  imageURL: string;
+  uploadForm: FormGroup;
+
+  @ViewChild('this.form.value') formValues;
 
   constructor(
+    private usersService: UsersService,
     private productsService: ProductsService,
     private categoriesService: CategoriesService,
-  ) { }
+    public fb: FormBuilder,
+  ) {
+    this.form = this.fb.group({
+      name: [''],
+      description: [''],
+      price: [''],
+      stock: [''],
+      popularity: [''],
+      category: [''],
+      avatar: [null]
+    })
+  }
 
   ngOnInit(): void {
-    this.AllCategories()
   }
 
-  // PRODUCT CREATE
-  ProductCreate(productForm: NgForm){
-    const product = productForm.value;
-    console.log(product);
-    this.productsService.addProduct(product)
-      .subscribe(
-        (res: HttpResponse<any>) => {
-        // tslint:disable-next-line: no-string-literal
-        this.successMsg = res['message'];
-        console.log(this.successMsg);
-        setTimeout(() => {
-        }, 2000);
-        },
-        (error: HttpErrorResponse) => {
-        this.errorMsg = error.error.message;
-        setTimeout(() =>  this.errorMsg = '' , 2000);
-    });
+  // CREATE PRODUCT
+  addProduct() {
+    console.log(this.form.value)
+    var formData: any = new FormData();
+    formData.append("name", this.form.get('name').value);
+    formData.append("description", this.form.get('description').value);
+    formData.append("price", this.form.get('price').value);
+    formData.append("stock", this.form.get('stock').value);
+    formData.append("popularity", this.form.get('popularity').value);
+    formData.append("category", this.form.get('category').value);
+    formData.append("avatar", this.form.get('avatar').value);
+
+    this.productsService.addProduct(formData)
+    .subscribe(res => {
+    })
+    // this.ProductsByUserId(this.token); //LLAMAR AL OTRO COMPONENTE
+    this.formValues.resetForm();
+    this.msg = 'Product create'; 
+    // if (imageInput.files[0])
   }
 
-  // ALL CATEGORIES
-  AllCategories() {
-    console.log("vienen las categorias")
-    this.categoriesService.getCategoriesAll().subscribe((category: any) => {
-      this.categories = category;
-      console.log(category);
+  // IMAGE MANAGEMENT
+  uploadFile(event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({
+      avatar: file
     });
-}
+    this.form.get('avatar').updateValueAndValidity()
+
+    // File Preview
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imageURL = reader.result as string;
+    }
+    reader.readAsDataURL(file)
+  }
 
 }

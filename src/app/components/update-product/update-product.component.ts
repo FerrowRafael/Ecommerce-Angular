@@ -11,46 +11,50 @@ import { NgForm } from '@angular/forms';
 })
 export class UpdateProductComponent implements OnInit {
 
-  public errorMsg: string;
-  public successMsg: string;
-  selectedValue: string;
-  message;
-  categories;
+  msg:string = '';
+  model:any = {};
+  model2:any = {};
+  myValue;
+  products: any;
+  hideUpdate:boolean = true;
+  categories: any;
+
   constructor(
     private productsService: ProductsService,
     private categoriesService: CategoriesService,
   ) { }
 
   ngOnInit(): void {
-    this.AllCategories()
   }
 
-    // PRODUCT UPDATE
-    ProductUpdate(productForm: NgForm){
-      const product = productForm.value;
-      console.log(product, product.id);
-      this.productsService.ProductUpdate(product, product.id)
-        .subscribe(
-          // (res: HttpResponse<any>) => {
-          // // tslint:disable-next-line: no-string-literal
-          // this.successMsg = res['message'];
-          // console.log(this.successMsg);
-          // setTimeout(() => {
-          // }, 2000);
-          // },
-          // (error: HttpErrorResponse) => {
-          // this.errorMsg = error.error.message;
-          // setTimeout(() =>  this.errorMsg = '' , 2000);
-      // }
-      );
-    }
-  
-    // ALL CATEGORIES
-    AllCategories() {
-      console.log("vienen las categorias")
-      this.categoriesService.getCategoriesAll().subscribe((category: any) => {
-        this.categories = category;
-        console.log(category);
+  // UPDATE PRODUCT
+  updateProduct():void {
+    let i = this.myValue;
+    for(let j = 0; j < this.products.length; j++){
+      if(i == j) {
+        this.products[i] = this.model2;
+        let id = this.model2._id
+        this.productsService.ProductUpdate(this.model2, id)
+        .subscribe((product: any) => {
       });
+        this.msg = 'Product update';
+      
+      }
+    } 
+    // this.ProductsByUserId(this.token); //LLAMAR AL OTRO COMPONENTE
+    this.hideUpdate = true;
+  }
+
+  editProduct(i):void {
+    this.hideUpdate = false;
+    this.model2._id = this.products[i]._id;
+    this.model2.name = this.products[i].name;
+    this.model2.description = this.products[i].description;
+    this.model2.image = this.products[i].image_path;
+    this.model2.price = this.products[i].price;
+    this.model2.popularity = this.products[i].popularity;
+    this.model2.stock = this.products[i].stock;
+    this.model2.category = this.products[i].category;
+    this.myValue = i;
   }
 }

@@ -6,11 +6,12 @@ import { ProductsService } from 'src/app/services/products.service';
 import { CategoriesService} from 'src/app/services/categories.service'
 
 @Component({
-  selector: 'app-seller-products',
-  templateUrl: './seller-products.component.html',
-  styleUrls: ['./seller-products.component.scss']
+  selector: 'app-list-products-seller.component',
+  templateUrl: './list-products-seller.component.html',
+  styleUrls: ['./list-products-seller.component.scss']
 })
-export class SellerProductsComponent {
+
+export class ListProductsSellerComponent {
   
   msg:string = '';
   model:any = {};

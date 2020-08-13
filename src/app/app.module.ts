@@ -11,7 +11,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
-import { SellerProductsComponent } from './components/seller-products/seller-products.component';
+import { ListProductsSellerComponent } from './components/list-products-seller/list-products-seller.component';
 //#endregion
 
 //#region Containers
@@ -51,6 +51,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+
 //#region 
 
 @NgModule({
@@ -69,8 +70,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     UpdateProductComponent,
     SellerProfileComponent,
     CartComponent,
-    SellerProductsComponent,
- 
+    ListProductsSellerComponent,
   ],
   imports: [
     BrowserModule,

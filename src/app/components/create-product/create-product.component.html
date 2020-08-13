@@ -1,52 +1,85 @@
 
-<div class="registerContainer container">
-    <h2>Create Product</h2>
-    <div class="row">
-        <form class="modal-body col-6"#productForm="ngForm" (submit)="ProductCreate(productForm)">
-             <mat-form-field class="md-form mb-5">
-                <mat-label>ID</mat-label>
-                <input matInput type="text" name="id" #name="ngModel" id="id" ngModel>
-            </mat-form-field> 
-            <mat-form-field class="md-form mb-5">
-                <mat-label>Name</mat-label>
-                <input matInput type="text" name="name" #name="ngModel" id="name" ngModel>
-              </mat-form-field>
-            <div class="md-form mb-5">
-                <textarea class="form-control validate white-text" type="text" name="description" #description="ngModel" id="description" placeholder="description" ngModel></textarea>
-            </div>
-            <mat-form-field class="md-form mb-5">
+<!-- CREATE PRODUCT -->
+<form [formGroup]="form" (ngSubmit)="addProduct()">
+    <h2>Create Product: </h2>
+      <div class="row">
+        <div class="col-4">
+          <!-- NAME -->
+          <p>
+          <mat-form-field class="inputLonger1" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name" formControlName="name">
+          </mat-form-field>
+          </p>
+
+          <!-- DESCRIPTION -->
+          <p>
+          <mat-form-field class="inputLonger1" appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="Description" formControlName="description"></textarea>
+          </mat-form-field>
+          </p>
+
+          <div class="row ">
+            <!-- PRICE -->
+            <p>
+              <mat-form-field class="inputLonger2" appearance="outline">
                 <mat-label>Price</mat-label>
-                <input matInput type="text" name="price" #price="ngModel" id="price" ngModel>
-            </mat-form-field>
-            <mat-form-field class="md-form mb-5">
-                <mat-label>Image_path</mat-label>
-                <input matInput type="text" name="image_path" #image_path="ngModel" id="image_path" ngModel>
-            </mat-form-field>
-            <mat-form-field class="md-form mb-5">
+                <input matInput type="number" placeholder="Price" formControlName="price">
+              </mat-form-field>
+            </p>
+
+            <!-- STOCK -->
+            <p>
+              <mat-form-field class="inputLonger2" appearance="outline">
                 <mat-label>Stock</mat-label>
-                <input matInput type="text" name="stock" #stock="ngModel" id="stock" ngModel>
-            </mat-form-field>
-            <mat-form-field class="md-form mb-5">
+                <input matInput type="number" placeholder="Stock" formControlName="stock">
+              </mat-form-field>
+            </p>
+          </div>
+
+          <div class="row ">
+            <!-- POPULARITY -->
+            <p>
+              <mat-form-field class="inputLonger2" appearance="outline">
                 <mat-label>Popularity</mat-label>
-                <input matInput type="text" name="popularity" #popularity="ngModel" id="popularity" ngModel>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
+                <input matInput type="number" placeholder="Popularity" formControlName="popularity">
+              </mat-form-field>
+            </p>
+          
+            <!-- CATEGORY -->
+            <p>
+              <mat-form-field class="inputLonger2" appearance="outline">
                 <mat-label>Category</mat-label>
-                <mat-select [(ngModel)]="selectedValue" name="category">
-                  <mat-option *ngFor="let category of categories" [value]="category.name">
+                <mat-select formControlName="category">
+                  <mat-option *ngFor="let category of categories" [value]="category.name"  >
                     {{category.name}}
                   </mat-option>
                 </mat-select>
-            </mat-form-field>
-            <!-- <button type="submit">Create Product</button>
-             Mensajes 
-            <div class="succesmessage" *ngIf="successMsg">
-                {{successMsg}}  
-            </div>
-            <div class="errormessage">
-                {{errorMsg}}
-            </div>  -->
-        </form>
-    </div>
-</div>
+              </mat-form-field>
+            </p>
+          </div>
+        </div>
 
+        <!-- Rigth side -->
+        <div class="col-sm-3">
+            <div>
+              <div class="form-group">
+                  <input type="file" accept="image/*" (change)="uploadFile($event)">
+              </div>
+
+              <!-- Image Preview -->
+              <div class="imagePreview">
+                <div  *ngIf="imageURL && imageURL !== ''">
+                  <img [src]="imageURL" width="300px" [alt]="uploadForm">
+                </div>
+              </div>
+            </div>
+
+            <!-- BUTTON -->
+            <div class="form-group">
+                <button class="btn btn-danger btn-block btn-lg">Create</button>
+            </div>
+        </div>
+    </div>      
+</form>
