@@ -17,6 +17,9 @@ export class CreateProductComponent implements OnInit {
   message;
   categories;
   form: FormGroup;
+  users: any;
+  products: any;
+  token = localStorage.getItem('authToken');
 
   //File Preview
   imageURL: string;
@@ -42,11 +45,11 @@ export class CreateProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCategories()
   }
 
   // CREATE PRODUCT
   addProduct() {
-    console.log(this.form.value)
     var formData: any = new FormData();
     formData.append("name", this.form.get('name').value);
     formData.append("description", this.form.get('description').value);
@@ -59,8 +62,8 @@ export class CreateProductComponent implements OnInit {
     this.productsService.addProduct(formData)
     .subscribe(res => {
     })
-    // this.ProductsByUserId(this.token); //LLAMAR AL OTRO COMPONENTE
-    this.formValues.resetForm();
+    this.ProductsByUserId(this.token); //LLAMAR AL OTRO COMPONENTE
+    // this.formValues.resetForm();
     this.msg = 'Product create'; 
     // if (imageInput.files[0])
   }
@@ -81,4 +84,27 @@ export class CreateProductComponent implements OnInit {
     reader.readAsDataURL(file)
   }
 
+  // GET CATEGORIES
+  getCategories() {
+    this.categoriesService.getCategoriesAll()
+      .subscribe((category: any) => {
+        this.categories = category;
+      })
+  }
+
+  // SHOW PRODUCTS
+  ProductsByUserId(token) {
+    this.usersService.getUserInfo(token).subscribe((user: any) => {
+      this.users = user;
+      this.productsService.getProductsByUserId(this.users._id)
+      .subscribe((product: any) => {
+        this.products = product;
+        console.log(this.products)
+      }) 
+      this.categoriesService.getCategoriesAll()
+      .subscribe((category: any) => {
+        this.categories = category;
+      })
+    })
+  }
 }

@@ -1,0 +1,35 @@
+<!-- TABLA PRODUCTOS -->
+    <div class="row">
+      <div class="col-sm-7">
+        <h2>Products: </h2>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products; let i = index">
+                <td>{{product._id}}</td>
+                <td>{{product.name}}</td>
+                <img style="width:60px" :src="http://localhost:3001/images/{{product.image_path[0]}}">
+                <td>{{product.price}} €</td>
+                <td>
+                    <a (click)="editProduct(i)" class="btn btn-success">
+                    Edit
+                    </a>
+                    <a (click)="deleteProduct(i)" class="btn btn-danger">
+                    Delete
+                    </a>
+                </td>
+            </tr>
+  
+          </tbody>
+        </table>
+      </div>
+      
+      

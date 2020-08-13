@@ -1,6 +1,6 @@
 <div nz-row class="product-box">
     <div nz-col nzSpan="10" class="img">
-        <img class="product-img" [src]="detalle.image_path" alt="" [routerLink]="'/details/' + product._id"> 
+        <img class="product-img" :src="http://localhost:3001/images/{{detalle.image_path[0]}}" alt="" [routerLink]="'/details/' + product._id"> 
     </div>
     <div nz-col nzSpan="12" class="details">
         <h2 class="product-name">{{ detalle.name }}</h2>
@@ -23,7 +23,7 @@
         <mat-card-header>
           <mat-card-title>{{product.name}}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image class="sugerencias" [src]="product.image_path" alt="" [routerLink]="'/details/' + product._id" alt={{product.name}}>
+        <img mat-card-image class="sugerencias" :src="http://localhost:3001/images/{{product.image_path[0]}}" alt="" [routerLink]="'/details/' + product._id" alt={{product.name}}>
         <mat-card-actions>
           <i class="fas fa-thumbs-up fa-2x"></i>
           <i class="fas fa-share-alt fa-2x"></i>

@@ -11,7 +11,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
-import { ListProductsSellerComponent } from './components/list-products-seller/list-products-seller.component';
+import { ListSellerProductsComponent } from './components/list-seller-products/list-seller-products.component';
 //#endregion
 
 //#region Containers
@@ -24,6 +24,7 @@ import { ResultsComponent } from './containers/results/results.component';
 import { UserProfileComponent } from './containers/user-profile/user-profile.component';
 import { SellerProfileComponent } from './containers/seller-profile/seller-profile.component';
 import { CartComponent } from './containers/cart/cart.component';
+
 //#endregion
 
 //#region ngDesign Zorro
@@ -50,6 +51,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { SellerProductsComponent } from './components/seller-products/seller-products.component';
+
 
 
 //#region 
@@ -70,7 +73,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     UpdateProductComponent,
     SellerProfileComponent,
     CartComponent,
-    ListProductsSellerComponent,
+    ListSellerProductsComponent,
+    SellerProductsComponent,
   ],
   imports: [
     BrowserModule,

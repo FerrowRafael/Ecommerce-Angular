@@ -42,7 +42,7 @@
             <mat-card-header>
               <mat-card-title>{{product.name}}</mat-card-title>
             </mat-card-header>
-            <img mat-card-image class="product-img" [src]="product.image_path" alt="" [routerLink]="'/details/' + product._id" alt={{product.name}}>
+            <img mat-card-image class="product-img" :src="http://localhost:3001/images/{{product.image_path[0]}}" alt="" [routerLink]="'/details/' + product._id" alt={{product.name}}>
             <mat-card-actions>
               <i class="fas fa-thumbs-up fa-2x"></i>
               <i class="fas fa-share-alt fa-2x"></i>

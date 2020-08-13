@@ -3,6 +3,7 @@ import { ProductsService } from 'src/app/services/products.service';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { DataService} from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-update-product',
@@ -45,6 +46,7 @@ export class UpdateProductComponent implements OnInit {
     this.hideUpdate = true;
   }
 
+// SHOW UPDATE COMPONENT
   editProduct(i):void {
     this.hideUpdate = false;
     this.model2._id = this.products[i]._id;
