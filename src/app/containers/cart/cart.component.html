@@ -31,8 +31,8 @@
                         <img style="width: 150px"class="product-img" :src="http://localhost:3001/images/{{product.image_path[0]}}" alt="" [routerLink]="'/details/' + product._id" alt={{product.name}}>
                         <p>{{ product.name }}</p>
                     </td>
-                    <td><input type="number" min="1" value=1 id="quantity"> units</td>
-                    <td>{{ product.price * 1}} €</td>
+                    <td><input type="number" min="1" value=1 > units</td>
+                    <td>{{ product.price * unit | number }} €</td>
                     </tr>
                 </table>
                 <button (click)="deleteProduct(product._id)">Delete product</button>

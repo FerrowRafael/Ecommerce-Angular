@@ -13,6 +13,9 @@ export class CartComponent implements OnInit {
 
   products: any;
   total:number;
+  unit= 1;
+
+
   constructor(
     public cartService: CartService,
     public orderService: OrdersService,
@@ -26,6 +29,7 @@ export class CartComponent implements OnInit {
     ) => acc + (obj.price * 1),
     0);
     console.log("Total: ", this.total)
+    console.log(this.unit)
   }
 
   productsCart() {
@@ -48,17 +52,16 @@ export class CartComponent implements OnInit {
       return p;
   });
   }
+
+
   insertOrder($event) {
-    console.log("Crear pedido")
+    let shopCart= JSON.parse(localStorage.getItem('cart'));
+    let productsCart = shopCart.map(product => ({ "_id": product._id, "unit": 1, "subtotal": 1 }))
+    console.log(productsCart)
     const order = {
       total: this.total,
       status: "pending",
-      productsIds: [
-        {
-          _id: 1,
-          unit: 1,
-          subtotal: 1 
-        }]
+      productsIds: productsCart
     }
     this.orderService.OrderCreate(order)
       .subscribe((res: HttpResponse<any>)  => 
