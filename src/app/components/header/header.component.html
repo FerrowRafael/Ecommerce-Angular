@@ -1,19 +1,18 @@
 
 <header class="header">
-    <!-- <img class="logo-header"routerLink="home" routerLink="home" routerLinkActive="active" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Google_Lens_-_new_logo.png/600px-Google_Lens_-_new_logo.png" alt="movit-logo"> -->
-    <div class="userZone login-header">
+    <div>
+    <img class="logo-header"routerLink="home" routerLink="home" routerLinkActive="active" src="https://www.cosasrandom.com/wp-content/uploads/2017/11/cropped-logo.png" alt="movit-logo">
         <a routerLink="home" routerLinkActive="active"><span>Home</span></a>
-        <a routerLink="results" routerLinkActive="active"><span>Results</span></a>
-        <!-- Buscador -->
-        <div class="buscadorNav navbar">
-            <p class="control has-icons-left has-icons-right">
-                <input class="input is-rounded" (keyup)="search($event)" type="text" placeholder="Search a product...">
-                <span class="icon is-small is-left">
-            <i class="fas fa-search"></i>
-        </span>
-            </p>
-        </div>
     </div>
+
+        <!-- SEARCH BAR -->
+        <div class="buscadorNav navbar">
+            <div class="row">
+                <div class="col-xs-12">
+                    <input class="form-control" ng-model="search" type="text" placeholder="Search Products" >
+                </div>
+            </div>
+        </div>
 
     <!-- SIN LOGEAR -->
     <div class="register userZone" *ngIf="!usersService.getUser()">
@@ -23,22 +22,26 @@
 
     <!-- LOGEADO -->
     <div class="userZone" *ngIf="usersService.getUser() as user">
-        
-        <div class="userZone" *ngIf="usersService.getUser().role == 'user'">
-            <a [routerLink]="['/profile']" routerLinkActive="active"><span>User Profile</span></a>
+        <div>
+            <div class="userZone" *ngIf="usersService.getUser().role == 'user'">
+                <a [routerLink]="['/profile']" routerLinkActive="active"><span>User Profile</span></a>
+            </div>
+            <div class="userZone" *ngIf="usersService.getUser().role == 'admin'">
+                <a [routerLink]="['/adminProfile']" routerLinkActive="active"><span>Admin Profile</span></a>
+            </div>
+            <div class="userZone" *ngIf="usersService.getUser().role == 'seller' ">
+                <a [routerLink]="['/sellerProfile']" routerLinkActive="active"><span>Seller Profile</span></a>
+            </div>
         </div>
-        <div class="userZone" *ngIf="usersService.getUser().role == 'admin'">
-            <a [routerLink]="['/adminProfile']" routerLinkActive="active"><span>Admin Profile</span></a>
-        </div>
-        <div class="userZone" *ngIf="usersService.getUser().role == 'seller' ">
-            <a [routerLink]="['/sellerProfile']" routerLinkActive="active"><span>Seller Profile</span></a>
-        </div>
-        
-        <div matBadge="15" matBadgeColor="warn">
+
+        <!-- CART -->
+        <div class="cart" >
             <a [routerLink]="['/cart']" routerLinkActive="active">
                 <i class="fas fa-shopping-cart"></i>
             </a>
         </div>
+
+        <!-- LOGOUT -->
         <div>
             <a class="bt-rent userZone" (click)="logout()">LOGOUT</a>
         </div>      

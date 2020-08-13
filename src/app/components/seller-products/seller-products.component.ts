@@ -84,19 +84,20 @@ export class SellerProductsComponent {
     })
     this.ProductsByUserId(this.token);
     this.formValues.resetForm();
+    this.msg = 'Product create'; 
     // if (imageInput.files[0])
   }
 
   // DELETE PRODUCT
   deleteProduct(i):void {
-    var answer = confirm('Estas seguro querer eliminarlo?');
+    var answer = confirm('Are you sure you want to delete it?');
     if(answer) {
       let id = this.products[i]._id;
         this.productsService.ProductDelete(id)
         .subscribe((product: any) => {
         })
       this.products.splice(i, 1);
-      this.msg = 'Producto eliminado';        
+      this.msg = 'Product delete';        
     }
   }
 
@@ -110,11 +111,12 @@ export class SellerProductsComponent {
         this.productsService.ProductUpdate(this.model2, id)
         .subscribe((product: any) => {
       });
-        this.msg = 'Producto actualizado';
+        this.msg = 'Product update';
       
       }
     } 
     this.ProductsByUserId(this.token);
+    this.hideUpdate = true;
   }
 
   editProduct(i):void {

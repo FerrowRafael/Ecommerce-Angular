@@ -4,44 +4,64 @@
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
     background-position: center;
     color: $white;
     height: 5em;
     width: 100%;
-    font-size: 1rem;
+    font-size: 20px;
+    font-family: Arial;
+    font-weight: 700;
     border-bottom-left-radius: 2em;
     border-bottom-right-radius: 2em;
 
     .guestZone, .userZone, .leftHeader {
         display: flex;
+        justify-content: space-around;
     }
 
     h1{
         font: 20px, #D5BAB0, Roboto;
     }
-    a {
+
+    img{
+        cursor: pointer;
+    }
+    a{
         all: unset;
-        padding: 0.8em;
+
+        color: white;
         cursor: pointer;
         transition: all 0.8s;
-        span:hover {
+        span{
+            padding: 2em;
+        }
+        span:hover{
             background-color: $lightblue;
+            opacity: 0.8;
         }
     }
-    
+    i{
+        padding: 2em;
+    }
         
+    .cart{
+        padding-left: 10px;
+        padding-right: 50px;
+    }
 
     .logo-header{
         width: 60px;
-    }
+    }          
 
-    
-}
+
 .fa-shopping-cart{
     height: 1em;
 }
 
 input{
     color: black
+}
+
 }
